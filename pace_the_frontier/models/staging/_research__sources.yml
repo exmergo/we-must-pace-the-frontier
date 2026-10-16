@@ -1,0 +1,59 @@
+version: 2
+
+sources:
+  - name: research
+    description: >
+      The research dataset as delivered (data/frontier_models_pace_the_frontier.csv), loaded
+      unchanged by scripts/load_raw.py with every column as VARCHAR. Definitions and rules are
+      in data/METHODOLOGY.md.
+    schema: raw
+    tables:
+      - name: frontier_model_candidates
+        description: >
+          One row per candidate release announced by a frontier lab between 7 Aug and
+          12 Oct 2026, counted or not. 52 rows.
+        columns:
+          - name: window
+            # window is a reserved word in DuckDB, so generic tests must quote it.
+            quote: true
+            description: before, after or outside, derived by the researcher from `date`.
+            data_tests:
+              - accepted_values:
+                  arguments:
+                    values: [before, after, outside]
+          - name: counted
+            description: yes if the row meets the inclusion rules (METHODOLOGY 4.2).
+            data_tests:
+              - not_null
+              - accepted_values:
+                  arguments:
+                    values: ['yes', 'no']
+          - name: date
+            description: Announcement date (ISO 8601) under the dating rule (METHODOLOGY 4.5).
+            data_tests: [not_null]
+          - name: developer
+            description: Lab or company.
+            data_tests: [not_null]
+          - name: model
+            description: Model name; combined names mark a single counted unit (METHODOLOGY 4.4).
+            data_tests: [unique, not_null]
+          - name: tier
+            description: Position in the developer's lineup at announcement; blank on most excluded rows.
+          - name: release_type
+            description: GA, preview, gated, open weights, announced only, and so on.
+            data_tests: [not_null]
+          - name: top_tier
+            description: yes when the model was the developer's most capable model or a new flagship generation; blank on excluded rows.
+            data_tests:
+              - accepted_values:
+                  arguments:
+                    values: ['yes', 'no']
+          - name: notes
+            description: Reason for exclusion, date conflicts and counting decisions.
+          - name: source_url
+            description: The single source the row relies on most.
+            data_tests: [not_null]
+          - name: _source_file
+            description: File the row was loaded from.
+          - name: _loaded_at
+            description: Load timestamp.

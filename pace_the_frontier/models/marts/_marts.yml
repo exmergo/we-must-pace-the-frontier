@@ -1,0 +1,236 @@
+version: 2
+
+models:
+  - name: dim_labs
+    description: >
+      One row per lab in the research (13 on the agreed list, 4 borderline), with its
+      geography and its recorded public stance on the essay. See seed_labs for sourcing.
+    columns:
+      - name: lab_id
+        description: Lab key (slug of the lab name).
+        data_tests: [unique, not_null]
+      - name: lab_name
+        description: Lab name as written in the research.
+        data_tests: [unique, not_null]
+      - name: in_scope_list
+        description: True for the 13 labs on the agreed list.
+      - name: lab_scope
+        description: agreed_13_lab_list or borderline.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [agreed_13_lab_list, borderline]
+      - name: parent_country
+        description: Country of the parent company.
+      - name: region
+        description: US, China, Europe or Japan.
+      - name: essay_coordination_group
+        description: us_frontier_company, other_democracy or china (see seed_labs).
+      - name: essay_stance
+        description: author, endorsed_publicly or none_recorded.
+      - name: is_author_or_endorser
+        description: True for Anthropic (author), OpenAI and xAI (public endorsements on 12 Sep 2026).
+        data_tests: [not_null]
+      - name: stance_date
+        description: Date of the recorded public stance.
+      - name: stance_quote
+        description: Verbatim public statement.
+      - name: stance_source_url
+        description: Source of the stance.
+
+  - name: fct_release_candidates
+    description: >
+      One row per candidate release (52), counted or not. The main definition is
+      `is_counted`; `is_counted_released_only`, `is_counted_incl_borderline` and
+      `essay_window_alt_date` reproduce the METHODOLOGY 7.2 variants.
+    columns:
+      - name: release_id
+        description: Surrogate key, slugify(developer) || '__' || slugify(model).
+        data_tests: [unique, not_null]
+      - name: lab_id
+        description: Lab key.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_labs')
+                field: lab_id
+      - name: model_name
+        description: Model name as written in the research; combined names are one counted unit.
+      - name: developer_name
+        description: Lab name as written in the research.
+      - name: tier
+        description: Position in the developer's lineup as written in the research.
+      - name: tier_band
+        description: flagship, upper, mid, small_fast or not_classified (no tier recorded).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [flagship, upper, mid, small_fast, not_classified]
+      - name: tier_rank
+        description: 1 flagship, 2 upper, 3 mid, 4 small or fast.
+      - name: is_top_tier
+        description: The researcher's top_tier flag (METHODOLOGY 4.6). Null on excluded rows.
+      - name: top_tier_kind
+        description: >
+          new_flagship (top tier, not a snapshot), flagship_refresh (top tier and a point or
+          snapshot update of an existing flagship), below_flagship, or not_assessed (excluded rows).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [new_flagship, flagship_refresh, below_flagship, not_assessed]
+      - name: release_type
+        description: Release type as written in the research.
+      - name: access_level
+        description: Normalized access on the counted date (see seed_release_type_map).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [general_availability, preview_or_limited, gated_or_restricted, announced_only, cancelled, non_release]
+      - name: is_generally_available
+        description: access_level = general_availability.
+      - name: is_restricted_access
+        description: Preview or limited, gated or restricted, or announced only.
+      - name: is_announced_only
+        description: Announced, not released (Qwen4).
+      - name: has_gated_variant
+        description: The same model also shipped at a restricted access level.
+      - name: open_weights_status
+        description: at_launch, promised_later or none.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [at_launch, promised_later, none]
+      - name: is_open_weights
+        description: Weights released at launch or promised for later.
+      - name: is_snapshot_update
+        description: Point release or snapshot update of an existing model.
+      - name: is_staggered_rollout
+        description: Wider access or weights announced for later dates.
+      - name: launch_event
+        description: Event the release was tied to, when the research notes name one.
+      - name: release_date
+        description: Announcement date (METHODOLOGY 4.5).
+        data_tests: [not_null]
+      - name: days_from_essay
+        description: release_date minus the essay date (12 Sep 2026), in days.
+      - name: essay_window
+        description: before (-30..-1), after (+1..+30), essay_day (0) or outside.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [before, after, essay_day, outside]
+      - name: essay_period
+        description: >
+          Signed 10-day period of days_from_essay, three per window: -3 = days 21..30 before,
+          -1 = days 1..10 before, +1 = days 1..10 after, +3 = days 21..30 after. Rows outside
+          the windows fall beyond +/-3.
+      - name: essay_period_label
+        description: Readable label for essay_period, for example "1-10 days after" or "21-30 days before".
+      - name: release_weekday
+        description: Day of the week of release_date.
+      - name: is_weekend
+        description: Released on a Saturday or Sunday.
+      - name: is_counted
+        description: Meets the inclusion rules (METHODOLOGY 4.2). The main definition.
+        data_tests: [not_null]
+      - name: exclusion_category
+        description: For excluded rows, the METHODOLOGY 4.3 category; null for counted rows.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [lab_outside_list, outside_window, roadmap_mention, never_released, decision_only_endpoint, product_configuration, serving_or_pricing_tier, non_llm_modality]
+      - name: is_borderline_lab
+        description: Developer is one of the four borderline labs.
+      - name: is_counted_released_only
+        description: Main definition minus announced-only models (METHODOLOGY 7.2).
+      - name: is_counted_incl_borderline
+        description: Main definition plus the borderline labs' in-window releases (METHODOLOGY 7.2).
+      - name: has_date_conflict
+        description: Credible sources disagree on the date (METHODOLOGY 7.1).
+      - name: alt_release_date
+        description: The conflicting date where one exists, otherwise release_date.
+      - name: days_from_essay_alt_date
+        description: alt_release_date minus the essay date.
+      - name: essay_window_alt_date
+        description: Window under the conflicting dates (the METHODOLOGY 7.1 worst case).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [before, after, essay_day, outside]
+      - name: is_window_date_sensitive
+        description: The conflicting date would move the row to a different window.
+      - name: source_url
+        description: Main supporting source.
+      - name: source_domain
+        description: Host of source_url.
+      - name: source_type
+        description: vendor, tracker, press or aggregator (METHODOLOGY 5).
+      - name: source_rank
+        description: 1 vendor, 2 tracker, 3 press, 4 aggregator.
+      - name: notes
+        description: Research notes as written.
+
+  - name: metricflow_time_spine
+    description: Day-grain calendar for 2026, required by MetricFlow.
+    time_spine:
+      standard_granularity_column: date_day
+    columns:
+      - name: date_day
+        granularity: day
+        data_tests: [unique, not_null]
+
+  - name: rpt_release_gaps
+    description: >
+      One row per pair of consecutive days with at least one counted release. gap_position
+      says whether the gap sits inside a window or spans the essay date.
+    columns:
+      - name: gap_id
+        data_tests: [unique, not_null]
+      - name: gap_start_date
+        description: Previous day with a counted release.
+      - name: gap_end_date
+        description: Day with a counted release.
+      - name: gap_days
+        description: Days between the two release days.
+      - name: quiet_days
+        description: Days with no counted release in between (gap_days - 1).
+      - name: releases_on_end_date
+        description: Counted releases on gap_end_date.
+      - name: start_window
+        description: Window of gap_start_date.
+      - name: end_window
+        description: Window of gap_end_date.
+      - name: gap_position
+        description: within_before, within_after or across_essay.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [within_before, within_after, across_essay]
+
+  - name: rpt_rate_tests
+    description: >
+      Before vs after counts per segment, with an exact conditional binomial test of equal
+      release rates and a Bonferroni correction across all rows. Descriptive statistics on
+      small counts, not evidence of cause.
+    columns:
+      - name: comparison_id
+        data_tests: [unique, not_null]
+      - name: comparison_order
+        description: Display order.
+      - name: comparison_group
+        description: headline, capability, essay_stance, geography, access or sensitivity.
+      - name: comparison_label
+        description: What the segment counts.
+      - name: before_count
+        description: Releases in the 30 days before the essay.
+      - name: after_count
+        description: Releases in the 30 days after the essay.
+      - name: change
+        description: after_count - before_count.
+      - name: rate_ratio
+        description: after_count / before_count; null when before_count is 0.
+      - name: p_value_two_sided
+        description: Exact two-sided p-value of Binomial(before + after, 0.5) at after_count.
+      - name: p_value_bonferroni
+        description: p_value_two_sided times the number of comparisons, capped at 1.

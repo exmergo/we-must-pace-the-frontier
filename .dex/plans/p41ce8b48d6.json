@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "plan_id": "p41ce8b48d6",
+  "created_at": "2026-10-16T09:36:15.944438+00:00",
+  "intent": "Portable profile path, study vars, slugify/essay_window macros, and enrichment seeds (labs, release-type map, tier map, source hierarchy, date sensitivity)",
+  "project_dir": "pace_the_frontier",
+  "edit_target": "project",
+  "edits": [
+    {
+      "path": "profiles.yml",
+      "new_content": "pace_the_frontier:\n  target: dev\n  outputs:\n    dev:\n      type: duckdb\n      # Relative to this project directory: dbt (and dex) run with cwd = pace_the_frontier/.\n      path: ../warehouse/pace_the_frontier.duckdb\n",
+      "old_content_hash": "41413a9aa9e11b92c2e3a61df25594e407ff9abb695aa5790b347ee186b7312c",
+      "op": "upsert",
+      "kind": "profiles_yml"
+    },
+    {
+      "path": "dbt_project.yml",
+      "new_content": "name: pace_the_frontier\nversion: 1.0.0\nprofile: pace_the_frontier\nmodel-paths:\n- models\nseed-paths:\n- seeds\ntest-paths:\n- tests\nmacro-paths:\n- macros\nvars:\n  # Publication date of \"We Must Pace the Frontier\" (METHODOLOGY section 3).\n  essay_date: '2026-09-12'\n  # Width of each comparison window in calendar days, excluding the essay day.\n  window_days: 30\nmodels:\n  pace_the_frontier:\n    staging:\n      +schema: staging\n      +materialized: view\n    intermediate:\n      +schema: intermediate\n      +materialized: view\n    marts:\n      +schema: marts\n      +materialized: table\nseeds:\n  pace_the_frontier:\n    +schema: reference\n",
+      "old_content_hash": "b4eb27db4a2721fc224abf1116c02e7b67720fae8139ff34f428ead9da21f2e4",
+      "op": "upsert",
+      "kind": "project_yml"
+    },
+    {
+      "path": "macros/slugify.sql",
+      "new_content": "{#- Lower-case, collapse every run of non-alphanumerics to \"_\", trim the ends.\n    \"Alibaba (Qwen)\" -> alibaba_qwen, \"Claude Fable 5.1 / Claude Mythos 5.1\" -> claude_fable_5_1_claude_mythos_5_1 -#}\n{% macro slugify(expression) -%}\n    trim(regexp_replace(lower({{ expression }}), '[^a-z0-9]+', '_', 'g'), '_')\n{%- endmacro %}\n",
+      "old_content_hash": null,
+      "op": "upsert",
+      "kind": "macro_sql"
+    },
+    {
+      "path": "macros/essay_window.sql",
+      "new_content": "{#- Classify a signed day offset from the essay date into the study windows\n    (METHODOLOGY section 3): before = -30..-1, after = +1..+30, the essay day\n    itself belongs to neither window, everything else is outside. -#}\n{% macro essay_window(days_expression) -%}\n    case\n        when {{ days_expression }} between -{{ var('window_days') }} and -1 then 'before'\n        when {{ days_expression }} between 1 and {{ var('window_days') }} then 'after'\n        when {{ days_expression }} = 0 then 'essay_day'\n        else 'outside'\n    end\n{%- endmacro %}\n",
+      "old_content_hash": null,
+      "op": "upsert",
+      "kind": "macro_sql"
+    },
+    {
+      "path": "seeds/seed_labs.csv",
+      "new_content": "lab_id,lab_name,in_scope_list,parent_country,region,essay_coordination_group,essay_stance,stance_date,stance_quote,stance_source_url\nopenai,OpenAI,true,United States,US,us_frontier_company,endorsed_publicly,2026-09-12,I agree with Dario that we need to pace the frontier,https://rits.shanghai.nyu.edu/ai/amodei-calls-to-pace-the-frontier-altman-and-musk-agree/\nanthropic,Anthropic,true,United States,US,us_frontier_company,author,2026-09-12,,https://darioamodei.com/post/we-must-pace-the-frontier\ngoogle_deepmind,Google DeepMind,true,United States,US,us_frontier_company,none_recorded,,,\nxai,xAI,true,United States,US,us_frontier_company,endorsed_publicly,2026-09-12,Dario is right,https://rits.shanghai.nyu.edu/ai/amodei-calls-to-pace-the-frontier-altman-and-musk-agree/\nmeta,Meta,true,United States,US,us_frontier_company,none_recorded,,,\ndeepseek,DeepSeek,true,China,China,china,none_recorded,,,\nalibaba_qwen,Alibaba (Qwen),true,China,China,china,none_recorded,,,\nmoonshot_ai,Moonshot AI,true,China,China,china,none_recorded,,,\nz_ai_zhipu,Z.ai (Zhipu),true,China,China,china,none_recorded,,,\nminimax,MiniMax,true,China,China,china,none_recorded,,,\ntencent,Tencent,true,China,China,china,none_recorded,,,\nbytedance,ByteDance,true,China,China,china,none_recorded,,,\nmistral_ai,Mistral AI,true,France,Europe,other_democracy,none_recorded,,,\nxiaomi,Xiaomi,false,China,China,china,none_recorded,,,\nstepfun,StepFun,false,China,China,china,none_recorded,,,\nmeituan,Meituan,false,China,China,china,none_recorded,,,\nsakana_ai,Sakana AI,false,Japan,Japan,other_democracy,none_recorded,,,\n",
+      "old_content_hash": null,
+      "op": "upsert",
+      "kind": "seed_csv"
+    },
+    {
+      "path": "seeds/seed_release_type_map.csv",
+      "new_content": "release_type,access_level,open_weights_status,has_gated_variant,is_snapshot_update,is_staggered_rollout\nAPI,general_availability,none,false,false,false\nAPI (experimental); open weights Aug 31,preview_or_limited,promised_later,false,false,true\nAPI + open weights,general_availability,at_launch,false,false,false\n\"Announced, not released\",announced_only,none,false,false,false\nConfiguration,non_release,none,false,false,false\nGated (Fairwind cyber defenders); no general date,gated_or_restricted,none,false,false,false\n\"Gated rollout (Trusted Access / Daybreak), then paid ChatGPT plans and API\",gated_or_restricted,none,false,false,true\nGeneral availability,general_availability,none,false,false,false\n\"General availability (ChatGPT Work, Codex, API)\",general_availability,none,false,false,false\nGeneral availability (Fable) + restricted access (Mythos),general_availability,none,true,false,false\n\"General availability (Meta Model API, Muse Code)\",general_availability,none,false,false,false\nGeneral availability (point release),general_availability,none,false,true,false\nGeneral availability (snapshot update),general_availability,none,false,true,false\nGeneral availability + gated Cyber variant (Fairwind Program),general_availability,none,true,false,false\nLimited access (GLM Coding Plan); API Aug 19; open weights Aug 28,preview_or_limited,promised_later,false,false,true\nMentioned as near completion,non_release,none,false,false,false\nOpen weights,general_availability,at_launch,false,false,false\nOpen weights + API,general_availability,at_launch,false,false,false\nPreview (API + open weights),preview_or_limited,at_launch,false,false,false\nPreview (API),preview_or_limited,none,false,false,false\nPreview (Kimi Code),preview_or_limited,none,false,false,false\nPreview (MiniMax Code / Token Plan only),preview_or_limited,none,false,false,false\nPreview (open weights Apache 2.0 + API),preview_or_limited,at_launch,false,false,false\nPricing tier,non_release,none,false,false,false\nPublic API preview; weights promised end of October,preview_or_limited,promised_later,false,false,true\nRelease cancelled,cancelled,none,false,false,false\nRolling out,preview_or_limited,none,false,false,true\nServing tier,non_release,none,false,false,false\nSubscription-only (Muse Code plans),preview_or_limited,none,false,false,false\n",
+      "old_content_hash": null,
+      "op": "upsert",
+      "kind": "seed_csv"
+    },
+    {
+      "path": "seeds/seed_tier_map.csv",
+      "new_content": "tier,tier_band,tier_rank\nFlagship,flagship,1\nFlagship (next generation),flagship,1\nMeta's top model at the time,flagship,1\nFrontier (API checkpoint),upper,2\nUpper tier (below Fable / Mythos),upper,2\nMid tier,mid,3\nMid tier (below Astra),mid,3\nMid tier (below Kimi K3),mid,3\nMid tier (point update),mid,3\nFlash / fast tier,small_fast,4\nFlash / fast tier (experimental),small_fast,4\nFlash / fast tier (omnimodal),small_fast,4\nSmall / fast tier,small_fast,4\nSmall / low-cost tier,small_fast,4\nSmall / open-weight tier,small_fast,4\n",
+      "old_content_hash": null,
+      "op": "upsert",
+      "kind": "seed_csv"
+    },
+    {
+      "path": "seeds/seed_source_domains.csv",
+      "new_content": "source_domain,source_type,source_rank\nplatform.claude.com,vendor,1\ndigitalapplied.com,tracker,2\nnocode.mba,tracker,2\ndatanorth.ai,press,3\nletsdatascience.com,press,3\ntechcrunch.com,press,3\nrits.shanghai.nyu.edu,press,3\nbetanews.com,press,3\ngigazine.net,press,3\npasqualepillitteri.it,press,3\nqcode.cc,press,3\ndatalearner.com,aggregator,4\nllmgateway.io,aggregator,4\nllm-stats.com,aggregator,4\norcarouter.ai,aggregator,4\nzenmux.ai,aggregator,4\nedenai.co,aggregator,4\n",
+      "old_content_hash": null,
+      "op": "upsert",
+      "kind": "seed_csv"
+    },
+    {
+      "path": "seeds/seed_date_sensitivity.csv",
+      "new_content": "model_name,date_used,conflicting_date,conflicting_date_source\nDeepSeek-V4-Pro-0813,2026-08-13,2026-08-12,OpenRouter listing\nKimi K2.8 Preview,2026-09-11,2026-09-12,One secondary source\nGrok 4.6,2026-08-12,2026-08-07,Rollout reportedly began 7 Aug\nQwen3.8-Omni-Flash,2026-09-18,2026-09-20,Some trackers\n",
+      "old_content_hash": null,
+      "op": "upsert",
+      "kind": "seed_csv"
+    },
+    {
+      "path": "seeds/_seeds.yml",
+      "new_content": "version: 2\n\nseeds:\n  - name: seed_labs\n    description: >\n      One row per lab that appears in the research, the 13 labs on the agreed list plus the\n      four borderline labs (METHODOLOGY 4.1). Country and region are general knowledge.\n      Essay stance comes only from sources the study already cites: the essay itself and\n      NYU Shanghai RITS (15 Sep 2026), which reports the Altman and Musk endorsements.\n      `none_recorded` means no response was found in those sources; it was not researched\n      further and is not evidence of disagreement.\n    config:\n      column_types:\n        in_scope_list: boolean\n        stance_date: date\n    columns:\n      - name: lab_id\n        description: Slug of the lab name; matches `slugify(developer)` in staging.\n        data_tests: [unique, not_null]\n      - name: lab_name\n        description: Lab name exactly as written in the research CSV `developer` column.\n        data_tests: [unique, not_null]\n      - name: in_scope_list\n        description: True for the 13 labs on the agreed list (METHODOLOGY 4.1), false for borderline labs.\n        data_tests: [not_null]\n      - name: parent_country\n        description: Country of the lab's parent company.\n      - name: region\n        description: US, China, Europe or Japan.\n        data_tests:\n          - accepted_values:\n              arguments:\n                values: [US, China, Europe, Japan]\n      - name: essay_coordination_group\n        description: >\n          Where the lab sits relative to the essay's asks. `us_frontier_company`: covered by the\n          proposed US regulation and the democratic coordination talks. `other_democracy`: in\n          scope for democratic coordination only. `china`: reached only by the essay's global\n          coordination levels.\n        data_tests:\n          - accepted_values:\n              arguments:\n                values: [us_frontier_company, other_democracy, china]\n      - name: essay_stance\n        description: author, endorsed_publicly or none_recorded (see model description).\n        data_tests:\n          - accepted_values:\n              arguments:\n                values: [author, endorsed_publicly, none_recorded]\n      - name: stance_date\n        description: Date of the public stance, when one is recorded.\n      - name: stance_quote\n        description: Verbatim public statement, when one is recorded.\n      - name: stance_source_url\n        description: Source for the stance.\n\n  - name: seed_release_type_map\n    description: >\n      Maps each distinct `release_type` string in the research CSV to normalized access\n      attributes. Derived only from the wording of `release_type`. Access level describes\n      access on the counted (first-announcement) date.\n    config:\n      column_types:\n        has_gated_variant: boolean\n        is_snapshot_update: boolean\n        is_staggered_rollout: boolean\n    columns:\n      - name: release_type\n        data_tests: [unique, not_null]\n      - name: access_level\n        description: >\n          general_availability (anyone can use it through an API, app or weights),\n          preview_or_limited (a preview, experimental build, or a single product surface such as\n          one coding tool or a subscription plan), gated_or_restricted (access by vetting or a\n          trusted-access program), announced_only, cancelled, non_release (pricing or serving\n          tiers, configurations and roadmap mentions, all excluded rows).\n        data_tests:\n          - accepted_values:\n              arguments:\n                values: [general_availability, preview_or_limited, gated_or_restricted, announced_only, cancelled, non_release]\n      - name: open_weights_status\n        description: at_launch, promised_later (weights announced for a later date) or none.\n        data_tests:\n          - accepted_values:\n              arguments:\n                values: [at_launch, promised_later, none]\n      - name: has_gated_variant\n        description: The same model also shipped at a restricted access level (Mythos, Gemini Flash Cyber).\n      - name: is_snapshot_update\n        description: The release type names a point release or snapshot update of an existing model.\n      - name: is_staggered_rollout\n        description: The release type names later dates for wider access or weights.\n\n  - name: seed_tier_map\n    description: Maps each distinct `tier` string to a coarse tier band and rank (1 = flagship).\n    columns:\n      - name: tier\n        data_tests: [unique, not_null]\n      - name: tier_band\n        data_tests:\n          - accepted_values:\n              arguments:\n                values: [flagship, upper, mid, small_fast]\n      - name: tier_rank\n        description: 1 flagship, 2 upper, 3 mid, 4 small or fast.\n\n  - name: seed_source_domains\n    description: >\n      Maps each `source_url` domain to the source hierarchy in METHODOLOGY section 5:\n      1 vendor, 2 tracker citing vendor primaries, 3 trade press, 4 aggregator listing.\n    columns:\n      - name: source_domain\n        data_tests: [unique, not_null]\n      - name: source_type\n        data_tests:\n          - accepted_values:\n              arguments:\n                values: [vendor, tracker, press, aggregator]\n      - name: source_rank\n\n  - name: seed_date_sensitivity\n    description: >\n      The rows whose date is disputed between credible sources, transcribed from\n      METHODOLOGY section 7.1. Used to rebuild the windows under the conflicting dates.\n    config:\n      column_types:\n        date_used: date\n        conflicting_date: date\n    columns:\n      - name: model_name\n        data_tests: [unique, not_null]\n      - name: date_used\n      - name: conflicting_date\n      - name: conflicting_date_source\n",
+      "old_content_hash": null,
+      "op": "upsert",
+      "kind": "schema_yml"
+    }
+  ],
+  "applied_at": null
+}

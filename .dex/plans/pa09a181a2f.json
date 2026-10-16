@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "plan_id": "pa09a181a2f",
+  "created_at": "2026-10-16T09:37:18.289542+00:00",
+  "intent": "Quote the reserved window column in source tests",
+  "project_dir": "pace_the_frontier",
+  "edit_target": "project",
+  "edits": [
+    {
+      "path": "models/staging/_research__sources.yml",
+      "new_content": "version: 2\n\nsources:\n  - name: research\n    description: >\n      The research dataset as delivered (data/frontier_models_pace_the_frontier.csv), loaded\n      unchanged by scripts/load_raw.py with every column as VARCHAR. Definitions and rules are\n      in data/METHODOLOGY.md.\n    schema: raw\n    tables:\n      - name: frontier_model_candidates\n        description: >\n          One row per candidate release announced by a frontier lab between 7 Aug and\n          12 Oct 2026, counted or not. 52 rows.\n        columns:\n          - name: window\n            # window is a reserved word in DuckDB, so generic tests must quote it.\n            quote: true\n            description: before, after or outside, derived by the researcher from `date`.\n            data_tests:\n              - accepted_values:\n                  arguments:\n                    values: [before, after, outside]\n          - name: counted\n            description: yes if the row meets the inclusion rules (METHODOLOGY 4.2).\n            data_tests:\n              - not_null\n              - accepted_values:\n                  arguments:\n                    values: ['yes', 'no']\n          - name: date\n            description: Announcement date (ISO 8601) under the dating rule (METHODOLOGY 4.5).\n            data_tests: [not_null]\n          - name: developer\n            description: Lab or company.\n            data_tests: [not_null]\n          - name: model\n            description: Model name; combined names mark a single counted unit (METHODOLOGY 4.4).\n            data_tests: [unique, not_null]\n          - name: tier\n            description: Position in the developer's lineup at announcement; blank on most excluded rows.\n          - name: release_type\n            description: GA, preview, gated, open weights, announced only, and so on.\n            data_tests: [not_null]\n          - name: top_tier\n            description: yes when the model was the developer's most capable model or a new flagship generation; blank on excluded rows.\n            data_tests:\n              - accepted_values:\n                  arguments:\n                    values: ['yes', 'no']\n          - name: notes\n            description: Reason for exclusion, date conflicts and counting decisions.\n          - name: source_url\n            description: The single source the row relies on most.\n            data_tests: [not_null]\n          - name: _source_file\n            description: File the row was loaded from.\n          - name: _loaded_at\n            description: Load timestamp.\n",
+      "old_content_hash": "858f8caba60c2438ade963dbf1afdcdbb135778105d33110098cf44183353eac",
+      "op": "upsert",
+      "kind": "schema_yml"
+    }
+  ],
+  "applied_at": "2026-10-16T09:37:18.653147+00:00"
+}

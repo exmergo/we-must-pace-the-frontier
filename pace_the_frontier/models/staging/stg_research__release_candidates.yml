@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: stg_research__release_candidates
+    description: >
+      The research CSV, one row per candidate release, renamed and typed. `window` is renamed
+      (it is a reserved word in DuckDB) and kept as `source_essay_window` so the intermediate
+      layer can re-derive it from the date and test the two against each other.
+    columns:
+      - name: release_id
+        description: Surrogate key, slugify(developer) || '__' || slugify(model).
+        data_tests: [unique, not_null]
+      - name: lab_id
+        description: slugify(developer); joins to seed_labs.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('seed_labs')
+                field: lab_id
+      - name: developer_name
+        description: Lab or company as written in the research.
+      - name: model_name
+        description: Model name as written in the research.
+        data_tests: [unique, not_null]
+      - name: release_date
+        description: Announcement date under the METHODOLOGY 4.5 dating rule.
+        data_tests: [not_null]
+      - name: source_essay_window
+        description: The window the researcher assigned (before, after, outside).
+      - name: is_counted
+        description: True when the row meets the inclusion rules (METHODOLOGY 4.2).
+        data_tests: [not_null]
+      - name: is_top_tier
+        description: The researcher's top_tier flag (METHODOLOGY 4.6); null on excluded rows.
+      - name: tier
+        description: Position in the developer's lineup; null when the research left it blank.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('seed_tier_map')
+                field: tier
+      - name: release_type
+        description: Release type as written in the research.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('seed_release_type_map')
+                field: release_type
+      - name: notes
+        description: Research notes (exclusion reasons, date conflicts, counting decisions).
+      - name: source_url
+        description: Main supporting source.
+      - name: source_domain
+        description: Host of source_url without a leading www.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('seed_source_domains')
+                field: source_domain
+      - name: _source_file
+        description: File the row was loaded from.
+      - name: _loaded_at
+        description: Load timestamp.

@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: int_release_candidates__enriched
+    description: >
+      Staged candidates joined to the mapping seeds, with every derived field the analysis
+      uses: timing relative to the essay, normalized tier and access, exclusion category,
+      the date-sensitivity windows and the METHODOLOGY 7.2 counting variants.
+    columns:
+      - name: release_id
+        data_tests: [unique, not_null]
+      - name: essay_window
+        description: Window re-derived from release_date with the essay_window macro.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [before, after, essay_day, outside]
+      - name: access_level
+        data_tests: [not_null]
+      - name: source_type
+        data_tests: [not_null]
+      - name: is_borderline_lab
+        data_tests: [not_null]

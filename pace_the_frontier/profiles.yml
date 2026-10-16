@@ -1,0 +1,7 @@
+pace_the_frontier:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      # Relative to this project directory: dbt (and dex) run with cwd = pace_the_frontier/.
+      path: ../warehouse/pace_the_frontier.duckdb

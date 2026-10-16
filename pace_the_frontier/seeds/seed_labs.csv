@@ -1,0 +1,18 @@
+lab_id,lab_name,in_scope_list,parent_country,region,essay_coordination_group,essay_stance,stance_date,stance_quote,stance_source_url
+openai,OpenAI,true,United States,US,us_frontier_company,endorsed_publicly,2026-09-12,I agree with Dario that we need to pace the frontier,https://rits.shanghai.nyu.edu/ai/amodei-calls-to-pace-the-frontier-altman-and-musk-agree/
+anthropic,Anthropic,true,United States,US,us_frontier_company,author,2026-09-12,,https://darioamodei.com/post/we-must-pace-the-frontier
+google_deepmind,Google DeepMind,true,United States,US,us_frontier_company,none_recorded,,,
+xai,xAI,true,United States,US,us_frontier_company,endorsed_publicly,2026-09-12,Dario is right,https://rits.shanghai.nyu.edu/ai/amodei-calls-to-pace-the-frontier-altman-and-musk-agree/
+meta,Meta,true,United States,US,us_frontier_company,none_recorded,,,
+deepseek,DeepSeek,true,China,China,china,none_recorded,,,
+alibaba_qwen,Alibaba (Qwen),true,China,China,china,none_recorded,,,
+moonshot_ai,Moonshot AI,true,China,China,china,none_recorded,,,
+z_ai_zhipu,Z.ai (Zhipu),true,China,China,china,none_recorded,,,
+minimax,MiniMax,true,China,China,china,none_recorded,,,
+tencent,Tencent,true,China,China,china,none_recorded,,,
+bytedance,ByteDance,true,China,China,china,none_recorded,,,
+mistral_ai,Mistral AI,true,France,Europe,other_democracy,none_recorded,,,
+xiaomi,Xiaomi,false,China,China,china,none_recorded,,,
+stepfun,StepFun,false,China,China,china,none_recorded,,,
+meituan,Meituan,false,China,China,china,none_recorded,,,
+sakana_ai,Sakana AI,false,Japan,Japan,other_democracy,none_recorded,,,

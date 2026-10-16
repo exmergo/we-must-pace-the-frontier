@@ -1,0 +1,16 @@
+tier,tier_band,tier_rank
+Flagship,flagship,1
+Flagship (next generation),flagship,1
+Meta's top model at the time,flagship,1
+Frontier (API checkpoint),upper,2
+Upper tier (below Fable / Mythos),upper,2
+Mid tier,mid,3
+Mid tier (below Astra),mid,3
+Mid tier (below Kimi K3),mid,3
+Mid tier (point update),mid,3
+Flash / fast tier,small_fast,4
+Flash / fast tier (experimental),small_fast,4
+Flash / fast tier (omnimodal),small_fast,4
+Small / fast tier,small_fast,4
+Small / low-cost tier,small_fast,4
+Small / open-weight tier,small_fast,4

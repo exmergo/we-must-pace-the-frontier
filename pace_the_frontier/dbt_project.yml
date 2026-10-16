@@ -1,0 +1,30 @@
+name: pace_the_frontier
+version: 1.0.0
+profile: pace_the_frontier
+model-paths:
+- models
+seed-paths:
+- seeds
+test-paths:
+- tests
+macro-paths:
+- macros
+vars:
+  # Publication date of "We Must Pace the Frontier" (METHODOLOGY section 3).
+  essay_date: '2026-09-12'
+  # Width of each comparison window in calendar days, excluding the essay day.
+  window_days: 30
+models:
+  pace_the_frontier:
+    staging:
+      +schema: staging
+      +materialized: view
+    intermediate:
+      +schema: intermediate
+      +materialized: view
+    marts:
+      +schema: marts
+      +materialized: table
+seeds:
+  pace_the_frontier:
+    +schema: reference

@@ -1,0 +1,30 @@
+release_type,access_level,open_weights_status,has_gated_variant,is_snapshot_update,is_staggered_rollout
+API,general_availability,none,false,false,false
+API (experimental); open weights Aug 31,preview_or_limited,promised_later,false,false,true
+API + open weights,general_availability,at_launch,false,false,false
+"Announced, not released",announced_only,none,false,false,false
+Configuration,non_release,none,false,false,false
+Gated (Fairwind cyber defenders); no general date,gated_or_restricted,none,false,false,false
+"Gated rollout (Trusted Access / Daybreak), then paid ChatGPT plans and API",gated_or_restricted,none,false,false,true
+General availability,general_availability,none,false,false,false
+"General availability (ChatGPT Work, Codex, API)",general_availability,none,false,false,false
+General availability (Fable) + restricted access (Mythos),general_availability,none,true,false,false
+"General availability (Meta Model API, Muse Code)",general_availability,none,false,false,false
+General availability (point release),general_availability,none,false,true,false
+General availability (snapshot update),general_availability,none,false,true,false
+General availability + gated Cyber variant (Fairwind Program),general_availability,none,true,false,false
+Limited access (GLM Coding Plan); API Aug 19; open weights Aug 28,preview_or_limited,promised_later,false,false,true
+Mentioned as near completion,non_release,none,false,false,false
+Open weights,general_availability,at_launch,false,false,false
+Open weights + API,general_availability,at_launch,false,false,false
+Preview (API + open weights),preview_or_limited,at_launch,false,false,false
+Preview (API),preview_or_limited,none,false,false,false
+Preview (Kimi Code),preview_or_limited,none,false,false,false
+Preview (MiniMax Code / Token Plan only),preview_or_limited,none,false,false,false
+Preview (open weights Apache 2.0 + API),preview_or_limited,at_launch,false,false,false
+Pricing tier,non_release,none,false,false,false
+Public API preview; weights promised end of October,preview_or_limited,promised_later,false,false,true
+Release cancelled,cancelled,none,false,false,false
+Rolling out,preview_or_limited,none,false,false,true
+Serving tier,non_release,none,false,false,false
+Subscription-only (Muse Code plans),preview_or_limited,none,false,false,false

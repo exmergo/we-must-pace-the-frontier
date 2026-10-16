@@ -1,0 +1,137 @@
+version: 2
+
+seeds:
+  - name: seed_labs
+    description: >
+      One row per lab that appears in the research, the 13 labs on the agreed list plus the
+      four borderline labs (METHODOLOGY 4.1). Country and region are general knowledge.
+      Essay stance comes only from sources the study already cites: the essay itself and
+      NYU Shanghai RITS (15 Sep 2026), which reports the Altman and Musk endorsements.
+      `none_recorded` means no response was found in those sources; it was not researched
+      further and is not evidence of disagreement. Context per lab: Altman's post also said
+      OpenAI would match the independent-evaluator commitment; Google DeepMind is classed by
+      its US parent (Alphabet) although the lab is headquartered in London; ByteDance has no
+      counted release in either window (METHODOLOGY 7.3).
+    config:
+      column_types:
+        in_scope_list: boolean
+        stance_date: date
+    columns:
+      - name: lab_id
+        description: Slug of the lab name; matches `slugify(developer)` in staging.
+        data_tests: [unique, not_null]
+      - name: lab_name
+        description: Lab name exactly as written in the research CSV `developer` column.
+        data_tests: [unique, not_null]
+      - name: in_scope_list
+        description: True for the 13 labs on the agreed list (METHODOLOGY 4.1), false for borderline labs.
+        data_tests: [not_null]
+      - name: parent_country
+        description: Country of the lab's parent company.
+      - name: region
+        description: US, China, Europe or Japan.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [US, China, Europe, Japan]
+      - name: essay_coordination_group
+        description: >
+          Where the lab sits relative to the essay's asks. `us_frontier_company`: covered by the
+          proposed US regulation and the democratic coordination talks. `other_democracy`: in
+          scope for democratic coordination only. `china`: reached only by the essay's global
+          coordination levels.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [us_frontier_company, other_democracy, china]
+      - name: essay_stance
+        description: author, endorsed_publicly or none_recorded (see model description).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [author, endorsed_publicly, none_recorded]
+      - name: stance_date
+        description: Date of the public stance, when one is recorded.
+      - name: stance_quote
+        description: Verbatim public statement, when one is recorded.
+      - name: stance_source_url
+        description: Source for the stance.
+
+  - name: seed_release_type_map
+    description: >
+      Maps each distinct `release_type` string in the research CSV to normalized access
+      attributes. Derived only from the wording of `release_type`. Access level describes
+      access on the counted (first-announcement) date.
+    config:
+      column_types:
+        has_gated_variant: boolean
+        is_snapshot_update: boolean
+        is_staggered_rollout: boolean
+    columns:
+      - name: release_type
+        data_tests: [unique, not_null]
+      - name: access_level
+        description: >
+          general_availability (anyone can use it through an API, app or weights),
+          preview_or_limited (a preview, experimental build, or a single product surface such as
+          one coding tool or a subscription plan), gated_or_restricted (access by vetting or a
+          trusted-access program), announced_only, cancelled, non_release (pricing or serving
+          tiers, configurations and roadmap mentions, all excluded rows).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [general_availability, preview_or_limited, gated_or_restricted, announced_only, cancelled, non_release]
+      - name: open_weights_status
+        description: at_launch, promised_later (weights announced for a later date) or none.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [at_launch, promised_later, none]
+      - name: has_gated_variant
+        description: The same model also shipped at a restricted access level (Mythos, Gemini Flash Cyber).
+      - name: is_snapshot_update
+        description: The release type names a point release or snapshot update of an existing model.
+      - name: is_staggered_rollout
+        description: The release type names later dates for wider access or weights.
+
+  - name: seed_tier_map
+    description: Maps each distinct `tier` string to a coarse tier band and rank (1 = flagship).
+    columns:
+      - name: tier
+        data_tests: [unique, not_null]
+      - name: tier_band
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [flagship, upper, mid, small_fast]
+      - name: tier_rank
+        description: 1 flagship, 2 upper, 3 mid, 4 small or fast.
+
+  - name: seed_source_domains
+    description: >
+      Maps each `source_url` domain to the source hierarchy in METHODOLOGY section 5:
+      1 vendor, 2 tracker citing vendor primaries, 3 trade press, 4 aggregator listing.
+    columns:
+      - name: source_domain
+        data_tests: [unique, not_null]
+      - name: source_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [vendor, tracker, press, aggregator]
+      - name: source_rank
+
+  - name: seed_date_sensitivity
+    description: >
+      The rows whose date is disputed between credible sources, transcribed from
+      METHODOLOGY section 7.1. Used to rebuild the windows under the conflicting dates.
+    config:
+      column_types:
+        date_used: date
+        conflicting_date: date
+    columns:
+      - name: model_name
+        data_tests: [unique, not_null]
+      - name: date_used
+      - name: conflicting_date
+      - name: conflicting_date_source

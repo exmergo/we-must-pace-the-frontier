@@ -14,3 +14,7 @@ dbt_packages/
 
 # OS
 .DS_Store
+
+# dbt project build output
+pace_the_frontier/target/
+pace_the_frontier/logs/

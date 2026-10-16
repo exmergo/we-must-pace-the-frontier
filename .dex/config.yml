@@ -1,0 +1,15 @@
+connector: duckdb
+duckdb:
+  path: warehouse/pace_the_frontier.duckdb
+dbt_target: dev
+dbt_project_dir: pace_the_frontier
+pii_overrides:
+  - column_name: lab_name
+    scope: pace_the_frontier.*
+    reason: AI lab (company) names, not people
+  - column_name: developer_name
+    scope: pace_the_frontier.*
+    reason: AI lab (company) names as written in the research CSV, not people
+  - column_name: notes
+    scope: pace_the_frontier.*
+    reason: Researcher notes on counting decisions and exclusions; public sources only, no personal data
