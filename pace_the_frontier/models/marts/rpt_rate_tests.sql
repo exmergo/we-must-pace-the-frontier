@@ -140,8 +140,9 @@ final as (
             when counts.before_count > 0
                 then round(counts.after_count::double / counts.before_count, 3)
         end as rate_ratio,
-        least(1.0, 2 * least(tails.lower_tail, tails.upper_tail)) as p_value_two_sided,
-        least(1.0, 2 * least(tails.lower_tail, tails.upper_tail) * count(*) over ()) as p_value_bonferroni
+        -- Rounded to 4 decimals: enough for a p-value, and it drops floating-point noise.
+        round(least(1.0, 2 * least(tails.lower_tail, tails.upper_tail)), 4) as p_value_two_sided,
+        round(least(1.0, 2 * least(tails.lower_tail, tails.upper_tail) * count(*) over ()), 4) as p_value_bonferroni
 
     from comparisons
     inner join counts

@@ -1,0 +1,30 @@
+release__release_date__day,release__essay_window,release__days_from_essay,release__model_name,release__tier_band,release__top_tier_kind,release__access_level,release__open_weights_status,lab__lab_name,lab__region,lab__essay_stance,frontier_releases
+2026-08-13,before,-30,DeepSeek-V4-Pro-0813,flagship,flagship_refresh,general_availability,none,DeepSeek,China,none_recorded,1
+2026-08-13,before,-30,Gemini 3.7 Flash,small_fast,below_flagship,general_availability,none,Google DeepMind,US,none_recorded,1
+2026-08-14,before,-29,Qwen3.8-27B,small_fast,below_flagship,general_availability,at_launch,Alibaba (Qwen),China,none_recorded,1
+2026-08-14,before,-29,GLM-5.3,flagship,new_flagship,preview_or_limited,promised_later,Z.ai (Zhipu),China,none_recorded,1
+2026-08-21,before,-22,DeepSeek-V4-Flash-Vision-Exp,small_fast,below_flagship,preview_or_limited,promised_later,DeepSeek,China,none_recorded,1
+2026-08-26,before,-17,Qwen3.8-Flash / Qwen3.8-Flash-Next,small_fast,below_flagship,general_availability,at_launch,Alibaba (Qwen),China,none_recorded,1
+2026-08-26,before,-17,GLM-5.3-Flash,small_fast,below_flagship,general_availability,at_launch,Z.ai (Zhipu),China,none_recorded,1
+2026-08-28,before,-15,Hy4 preview,flagship,new_flagship,preview_or_limited,at_launch,Tencent,China,none_recorded,1
+2026-09-01,before,-11,Claude Fable 5.1 / Claude Mythos 5.1,flagship,new_flagship,general_availability,none,Anthropic,US,author,1
+2026-09-02,before,-10,Qwen3.8-Max-0902,flagship,flagship_refresh,general_availability,none,Alibaba (Qwen),China,none_recorded,1
+2026-09-02,before,-10,Gemini 3.8 Flash (+ Gemini 3.8 Flash Cyber),small_fast,below_flagship,general_availability,none,Google DeepMind,US,none_recorded,1
+2026-09-02,before,-10,Muse Spark 1.3,flagship,new_flagship,general_availability,none,Meta,US,none_recorded,1
+2026-09-03,before,-9,GPT-6 Astra,flagship,new_flagship,gated_or_restricted,none,OpenAI,US,endorsed_publicly,1
+2026-09-10,before,-2,DeepSeek V4.1 Flash,small_fast,below_flagship,general_availability,none,DeepSeek,China,none_recorded,1
+2026-09-11,before,-1,Kimi K2.8 Preview,mid,below_flagship,preview_or_limited,none,Moonshot AI,China,none_recorded,1
+2026-09-18,after,6,Qwen3.8-Omni-Flash,small_fast,below_flagship,general_availability,none,Alibaba (Qwen),China,none_recorded,1
+2026-09-21,after,9,Grok 4.7,flagship,new_flagship,general_availability,none,xAI,US,endorsed_publicly,1
+2026-09-22,after,10,"Qwen4 family (Max, Plus, Flash, 27B)",flagship,new_flagship,announced_only,none,Alibaba (Qwen),China,none_recorded,1
+2026-09-22,after,10,Claude Opus 5.5,upper,below_flagship,general_availability,none,Anthropic,US,author,1
+2026-09-22,after,10,GPT-6 Luna,small_fast,below_flagship,general_availability,none,OpenAI,US,endorsed_publicly,1
+2026-09-22,after,10,GPT-6 Sol,mid,below_flagship,general_availability,none,OpenAI,US,endorsed_publicly,1
+2026-09-27,after,15,MiniMax M3.1-Flash-Preview,small_fast,below_flagship,preview_or_limited,none,MiniMax,China,none_recorded,1
+2026-09-28,after,16,Claude Sonnet 5.5,mid,below_flagship,general_availability,none,Anthropic,US,author,1
+2026-09-29,after,17,GPT-6.1 Sol,mid,below_flagship,general_availability,none,OpenAI,US,endorsed_publicly,1
+2026-09-30,after,18,Gemini 4 Argon,flagship,new_flagship,gated_or_restricted,none,Google DeepMind,US,none_recorded,1
+2026-10-06,after,24,Mistral Large 4,flagship,new_flagship,preview_or_limited,promised_later,Mistral AI,Europe,none_recorded,1
+2026-10-07,after,25,Claude Haiku 5.5,small_fast,below_flagship,general_availability,none,Anthropic,US,author,1
+2026-10-12,after,30,Muse Wonder Full,flagship,new_flagship,preview_or_limited,none,Meta,US,none_recorded,1
+2026-10-12,after,30,Muse Wonder,upper,below_flagship,general_availability,none,Meta,US,none_recorded,1

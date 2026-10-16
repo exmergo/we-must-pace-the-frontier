@@ -1,0 +1,8 @@
+release__essay_window,release__tier_band,release__tier_rank,frontier_releases
+before,flagship,1,7
+before,mid,3,1
+before,small_fast,4,7
+after,flagship,1,5
+after,upper,2,2
+after,mid,3,3
+after,small_fast,4,4

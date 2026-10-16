@@ -1,0 +1,13 @@
+lab__lab_name,lab__region,lab__essay_stance,frontier_releases_before,frontier_releases_after,frontier_releases_change,top_tier_releases_before,top_tier_releases_after
+DeepSeek,China,none_recorded,3,0,-3,1,0
+Z.ai (Zhipu),China,none_recorded,2,0,-2,1,0
+Alibaba (Qwen),China,none_recorded,3,2,-1,1,1
+Google DeepMind,US,none_recorded,2,1,-1,0,1
+Moonshot AI,China,none_recorded,1,0,-1,0,0
+Tencent,China,none_recorded,1,0,-1,1,0
+Meta,US,none_recorded,1,2,1,1,1
+MiniMax,China,none_recorded,0,1,1,0,0
+Mistral AI,Europe,none_recorded,0,1,1,0,1
+xAI,US,endorsed_publicly,0,1,1,0,1
+Anthropic,US,author,1,3,2,1,0
+OpenAI,US,endorsed_publicly,1,3,2,1,0

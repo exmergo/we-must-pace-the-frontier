@@ -1,0 +1,4 @@
+lab__region,lab__essay_coordination_group,frontier_releases_before,labs_shipping_before,frontier_releases_after,labs_shipping_after,frontier_releases_change,top_tier_releases_before,top_tier_releases_after
+China,china,10,5,3,2,-7,4,1
+Europe,other_democracy,0,0,1,1,1,0,1
+US,us_frontier_company,5,4,10,5,5,3,3

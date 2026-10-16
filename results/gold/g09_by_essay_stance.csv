@@ -1,0 +1,4 @@
+lab__essay_stance,lab__is_author_or_endorser,frontier_releases_before,labs_shipping_before,frontier_releases_after,labs_shipping_after,frontier_releases_change,top_tier_releases_before,top_tier_releases_after,top_tier_releases_change,new_flagship_releases_before,new_flagship_releases_after
+author,True,1,1,3,1,2,1,0,-1,1,0
+endorsed_publicly,True,1,1,4,2,3,1,1,0,1,1
+none_recorded,False,13,7,7,5,-6,5,4,-1,3,4

@@ -1,0 +1,14 @@
+release__essay_window,release__exclusion_category,release_candidates,excluded_candidates
+outside,outside_window,1,1
+before,lab_outside_list,1,1
+before,non_llm_modality,2,2
+before,roadmap_mention,1,1
+before,serving_or_pricing_tier,1,1
+before,,15,0
+after,decision_only_endpoint,1,1
+after,lab_outside_list,4,4
+after,never_released,1,1
+after,non_llm_modality,8,8
+after,product_configuration,1,1
+after,serving_or_pricing_tier,2,2
+after,,14,0

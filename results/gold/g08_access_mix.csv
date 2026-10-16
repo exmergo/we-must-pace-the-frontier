@@ -1,0 +1,12 @@
+release__essay_window,release__is_top_tier,release__access_level,frontier_releases
+before,True,gated_or_restricted,1
+before,False,general_availability,6
+before,True,general_availability,4
+before,False,preview_or_limited,2
+before,True,preview_or_limited,2
+after,True,announced_only,1
+after,True,gated_or_restricted,1
+after,False,general_availability,8
+after,True,general_availability,1
+after,False,preview_or_limited,1
+after,True,preview_or_limited,2
