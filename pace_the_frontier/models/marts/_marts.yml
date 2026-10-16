@@ -222,6 +222,8 @@ models:
         description: headline, capability, essay_stance, geography, access or sensitivity.
       - name: comparison_label
         description: What the segment counts.
+      - name: essay_date
+        description: The essay date (12 Sep 2026) both windows are measured from.
       - name: before_count
         description: Releases in the 30 days before the essay.
       - name: after_count

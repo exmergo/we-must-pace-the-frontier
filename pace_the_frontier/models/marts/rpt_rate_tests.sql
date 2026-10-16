@@ -131,6 +131,8 @@ final as (
         comparisons.comparison_id,
         comparisons.comparison_group,
         comparisons.comparison_label,
+        -- Every comparison is centred on the essay date; MetricFlow aggregates over it.
+        date '{{ var("essay_date") }}' as essay_date,
         counts.before_count,
         counts.after_count,
         counts.after_count - counts.before_count as change,

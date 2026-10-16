@@ -1,0 +1,392 @@
+version: 2
+
+metrics:
+  - name: frontier_releases
+    label: Frontier releases
+    description: >
+      Counted frontier model releases: the METHODOLOGY main definition (13 labs, general-purpose LLMs, new models, first announcement).
+    type: simple
+    type_params:
+      measure:
+        name: release_count
+        fill_nulls_with: 0
+    filter: "{{ Dimension('release__is_counted') }} = true"
+  - name: frontier_releases_before
+    label: Frontier releases, 30 days before the essay
+    description: >
+      Counted frontier model releases: the METHODOLOGY main definition (13 labs, general-purpose LLMs, new models, first announcement). Restricted to the 30 days before the essay.
+    type: simple
+    type_params:
+      measure:
+        name: release_count
+        fill_nulls_with: 0
+    filter: "{{ Dimension('release__is_counted') }} = true and {{ Dimension('release__essay_window') }} = 'before'"
+  - name: frontier_releases_after
+    label: Frontier releases, 30 days after the essay
+    description: >
+      Counted frontier model releases: the METHODOLOGY main definition (13 labs, general-purpose LLMs, new models, first announcement). Restricted to the 30 days after the essay.
+    type: simple
+    type_params:
+      measure:
+        name: release_count
+        fill_nulls_with: 0
+    filter: "{{ Dimension('release__is_counted') }} = true and {{ Dimension('release__essay_window') }} = 'after'"
+  - name: frontier_releases_change
+    label: Frontier releases, change (after minus before)
+    description: >
+      frontier_releases_after minus frontier_releases_before.
+    type: derived
+    type_params:
+      expr: frontier_releases_after - frontier_releases_before
+      metrics:
+        - name: frontier_releases_after
+        - name: frontier_releases_before
+  - name: frontier_releases_change_pct
+    label: Frontier releases, change (% of before)
+    description: >
+      (after - before) / before; null when nothing was released before.
+    type: derived
+    type_params:
+      expr: (frontier_releases_after - frontier_releases_before) * 1.0 / nullif(frontier_releases_before, 0)
+      metrics:
+        - name: frontier_releases_after
+        - name: frontier_releases_before
+  - name: top_tier_releases
+    label: Top-tier releases
+    description: >
+      Counted releases the researcher flagged top_tier: the lab's most capable model or a new flagship generation at announcement.
+    type: simple
+    type_params:
+      measure:
+        name: release_count
+        fill_nulls_with: 0
+    filter: "{{ Dimension('release__is_counted') }} = true and {{ Dimension('release__is_top_tier') }} = true"
+  - name: top_tier_releases_before
+    label: Top-tier releases, 30 days before the essay
+    description: >
+      Counted releases the researcher flagged top_tier: the lab's most capable model or a new flagship generation at announcement. Restricted to the 30 days before the essay.
+    type: simple
+    type_params:
+      measure:
+        name: release_count
+        fill_nulls_with: 0
+    filter: "{{ Dimension('release__is_counted') }} = true and {{ Dimension('release__is_top_tier') }} = true and {{ Dimension('release__essay_window') }} = 'before'"
+  - name: top_tier_releases_after
+    label: Top-tier releases, 30 days after the essay
+    description: >
+      Counted releases the researcher flagged top_tier: the lab's most capable model or a new flagship generation at announcement. Restricted to the 30 days after the essay.
+    type: simple
+    type_params:
+      measure:
+        name: release_count
+        fill_nulls_with: 0
+    filter: "{{ Dimension('release__is_counted') }} = true and {{ Dimension('release__is_top_tier') }} = true and {{ Dimension('release__essay_window') }} = 'after'"
+  - name: top_tier_releases_change
+    label: Top-tier releases, change (after minus before)
+    description: >
+      top_tier_releases_after minus top_tier_releases_before.
+    type: derived
+    type_params:
+      expr: top_tier_releases_after - top_tier_releases_before
+      metrics:
+        - name: top_tier_releases_after
+        - name: top_tier_releases_before
+  - name: top_tier_releases_change_pct
+    label: Top-tier releases, change (% of before)
+    description: >
+      (after - before) / before; null when nothing was released before.
+    type: derived
+    type_params:
+      expr: (top_tier_releases_after - top_tier_releases_before) * 1.0 / nullif(top_tier_releases_before, 0)
+      metrics:
+        - name: top_tier_releases_after
+        - name: top_tier_releases_before
+  - name: new_flagship_releases
+    label: New flagship releases
+    description: >
+      Top-tier releases that are not point or snapshot updates of an existing flagship.
+    type: simple
+    type_params:
+      measure:
+        name: release_count
+        fill_nulls_with: 0
+    filter: "{{ Dimension('release__is_counted') }} = true and {{ Dimension('release__top_tier_kind') }} = 'new_flagship'"
+  - name: new_flagship_releases_before
+    label: New flagship releases, 30 days before the essay
+    description: >
+      Top-tier releases that are not point or snapshot updates of an existing flagship. Restricted to the 30 days before the essay.
+    type: simple
+    type_params:
+      measure:
+        name: release_count
+        fill_nulls_with: 0
+    filter: "{{ Dimension('release__is_counted') }} = true and {{ Dimension('release__top_tier_kind') }} = 'new_flagship' and {{ Dimension('release__essay_window') }} = 'before'"
+  - name: new_flagship_releases_after
+    label: New flagship releases, 30 days after the essay
+    description: >
+      Top-tier releases that are not point or snapshot updates of an existing flagship. Restricted to the 30 days after the essay.
+    type: simple
+    type_params:
+      measure:
+        name: release_count
+        fill_nulls_with: 0
+    filter: "{{ Dimension('release__is_counted') }} = true and {{ Dimension('release__top_tier_kind') }} = 'new_flagship' and {{ Dimension('release__essay_window') }} = 'after'"
+  - name: new_flagship_releases_change
+    label: New flagship releases, change (after minus before)
+    description: >
+      new_flagship_releases_after minus new_flagship_releases_before.
+    type: derived
+    type_params:
+      expr: new_flagship_releases_after - new_flagship_releases_before
+      metrics:
+        - name: new_flagship_releases_after
+        - name: new_flagship_releases_before
+  - name: new_flagship_releases_change_pct
+    label: New flagship releases, change (% of before)
+    description: >
+      (after - before) / before; null when nothing was released before.
+    type: derived
+    type_params:
+      expr: (new_flagship_releases_after - new_flagship_releases_before) * 1.0 / nullif(new_flagship_releases_before, 0)
+      metrics:
+        - name: new_flagship_releases_after
+        - name: new_flagship_releases_before
+  - name: labs_shipping
+    label: Labs shipping
+    description: >
+      Distinct labs with at least one counted release.
+    type: simple
+    type_params:
+      measure:
+        name: lab_count
+        fill_nulls_with: 0
+    filter: "{{ Dimension('release__is_counted') }} = true"
+  - name: labs_shipping_before
+    label: Labs shipping, 30 days before the essay
+    description: >
+      Distinct labs with at least one counted release. Restricted to the 30 days before the essay.
+    type: simple
+    type_params:
+      measure:
+        name: lab_count
+        fill_nulls_with: 0
+    filter: "{{ Dimension('release__is_counted') }} = true and {{ Dimension('release__essay_window') }} = 'before'"
+  - name: labs_shipping_after
+    label: Labs shipping, 30 days after the essay
+    description: >
+      Distinct labs with at least one counted release. Restricted to the 30 days after the essay.
+    type: simple
+    type_params:
+      measure:
+        name: lab_count
+        fill_nulls_with: 0
+    filter: "{{ Dimension('release__is_counted') }} = true and {{ Dimension('release__essay_window') }} = 'after'"
+  - name: labs_shipping_change
+    label: Labs shipping, change (after minus before)
+    description: >
+      labs_shipping_after minus labs_shipping_before.
+    type: derived
+    type_params:
+      expr: labs_shipping_after - labs_shipping_before
+      metrics:
+        - name: labs_shipping_after
+        - name: labs_shipping_before
+  - name: labs_shipping_change_pct
+    label: Labs shipping, change (% of before)
+    description: >
+      (after - before) / before; null when nothing was released before.
+    type: derived
+    type_params:
+      expr: (labs_shipping_after - labs_shipping_before) * 1.0 / nullif(labs_shipping_before, 0)
+      metrics:
+        - name: labs_shipping_after
+        - name: labs_shipping_before
+  - name: generally_available_releases
+    label: Generally available releases
+    description: >
+      Counted releases generally available on their announcement date.
+    type: simple
+    type_params:
+      measure:
+        name: release_count
+        fill_nulls_with: 0
+    filter: "{{ Dimension('release__is_counted') }} = true and {{ Dimension('release__is_generally_available') }} = true"
+  - name: restricted_access_releases
+    label: Restricted-access releases
+    description: >
+      Counted releases that were preview or limited, gated, or announced only on their announcement date.
+    type: simple
+    type_params:
+      measure:
+        name: release_count
+        fill_nulls_with: 0
+    filter: "{{ Dimension('release__is_counted') }} = true and {{ Dimension('release__is_restricted_access') }} = true"
+  - name: open_weights_releases
+    label: Open-weights releases
+    description: >
+      Counted releases with weights at launch or promised for later.
+    type: simple
+    type_params:
+      measure:
+        name: release_count
+        fill_nulls_with: 0
+    filter: "{{ Dimension('release__is_counted') }} = true and {{ Dimension('release__is_open_weights') }} = true"
+  - name: generally_available_share
+    label: Share generally available
+    description: >
+      generally_available_releases / frontier_releases. A ratio: never sum it across groups.
+    type: ratio
+    type_params:
+      numerator: generally_available_releases
+      denominator: frontier_releases
+  - name: restricted_access_share
+    label: Share with restricted access
+    description: >
+      restricted_access_releases / frontier_releases. A ratio: never sum it across groups.
+    type: ratio
+    type_params:
+      numerator: restricted_access_releases
+      denominator: frontier_releases
+  - name: open_weights_share
+    label: Share with open weights
+    description: >
+      open_weights_releases / frontier_releases. A ratio: never sum it across groups.
+    type: ratio
+    type_params:
+      numerator: open_weights_releases
+      denominator: frontier_releases
+  - name: top_tier_share
+    label: Share top tier
+    description: >
+      top_tier_releases / frontier_releases. A ratio: never sum it across groups.
+    type: ratio
+    type_params:
+      numerator: top_tier_releases
+      denominator: frontier_releases
+  - name: frontier_releases_released_only
+    label: Frontier releases, released only
+    description: >
+      METHODOLOGY 7.2 variant: the main definition without announced-only models (drops Qwen4).
+    type: simple
+    type_params:
+      measure:
+        name: release_count
+        fill_nulls_with: 0
+    filter: "{{ Dimension('release__is_counted_released_only') }} = true"
+  - name: frontier_releases_incl_borderline
+    label: Frontier releases, incl. borderline labs
+    description: >
+      METHODOLOGY 7.2 variant: the main definition plus in-window releases from Xiaomi, StepFun, Meituan and Sakana AI.
+    type: simple
+    type_params:
+      measure:
+        name: release_count
+        fill_nulls_with: 0
+    filter: "{{ Dimension('release__is_counted_incl_borderline') }} = true"
+  - name: excluded_candidates
+    label: Excluded candidates
+    description: >
+      Candidate rows that fail the inclusion rules; group by exclusion_category.
+    type: simple
+    type_params:
+      measure:
+        name: release_count
+        fill_nulls_with: 0
+    filter: "{{ Dimension('release__is_counted') }} = false"
+  - name: release_candidates
+    label: Release candidates
+    description: >
+      Every candidate row the research recorded, counted or not.
+    type: simple
+    type_params:
+      measure:
+        name: release_count
+        fill_nulls_with: 0
+  - name: release_gaps
+    label: Gaps between release days
+    description: >
+      Pairs of consecutive days with a counted release.
+    type: simple
+    type_params:
+      measure: gap_count
+  - name: longest_gap_days
+    label: Longest gap (days)
+    description: >
+      Longest run between consecutive counted release days. Not additive.
+    type: simple
+    type_params:
+      measure: max_gap_days
+  - name: average_gap_days
+    label: Average gap (days)
+    description: >
+      Average days between consecutive counted release days. Not additive.
+    type: simple
+    type_params:
+      measure: avg_gap_days
+  - name: rate_test_before
+    label: Before (test)
+    description: >
+      Releases in the before window for one comparison. Group by rate_test__comparison_id.
+    type: simple
+    type_params:
+      measure: test_before_count
+  - name: rate_test_after
+    label: After (test)
+    description: >
+      Releases in the after window for one comparison. Group by rate_test__comparison_id.
+    type: simple
+    type_params:
+      measure: test_after_count
+  - name: rate_test_change
+    label: Change (test)
+    description: >
+      after - before for one comparison.
+    type: simple
+    type_params:
+      measure: test_change
+  - name: rate_test_rate_ratio
+    label: Rate ratio (test)
+    description: >
+      after / before for one comparison; null when before is 0.
+    type: simple
+    type_params:
+      measure: test_rate_ratio
+  - name: rate_test_p_value
+    label: p-value (exact, two-sided)
+    description: >
+      Exact conditional binomial test of equal release rates in both windows.
+    type: simple
+    type_params:
+      measure: test_p_value
+  - name: rate_test_p_value_bonferroni
+    label: p-value (Bonferroni)
+    description: >
+      The exact p-value times the number of comparisons, capped at 1.
+    type: simple
+    type_params:
+      measure: test_p_value_bonferroni
+
+  - name: frontier_releases_daily
+    label: Frontier releases per day
+    description: >
+      frontier_releases joined to the calendar, so days with no counted release appear as 0.
+      Group by metric_time__day and filter metric_time to the study period.
+    type: simple
+    type_params:
+      measure:
+        name: release_count
+        fill_nulls_with: 0
+        join_to_timespine: true
+    filter: "{{ Dimension('release__is_counted') }} = true"
+
+  - name: top_tier_releases_daily
+    label: Top-tier releases per day
+    description: >
+      top_tier_releases joined to the calendar, so days with no top-tier release appear as 0.
+    type: simple
+    type_params:
+      measure:
+        name: release_count
+        fill_nulls_with: 0
+        join_to_timespine: true
+    filter: "{{ Dimension('release__is_counted') }} = true and {{ Dimension('release__is_top_tier') }} = true"

@@ -1,0 +1,260 @@
+version: 2
+
+semantic_models:
+  - name: release_candidates
+    description: >
+      Every candidate release in the research, counted or not (fct_release_candidates).
+      Most metrics filter to is_counted, the METHODOLOGY main definition.
+    model: ref('fct_release_candidates')
+    defaults:
+      agg_time_dimension: release_date
+    entities:
+      - name: release
+        type: primary
+        expr: release_id
+      - name: lab
+        type: foreign
+        expr: lab_id
+    dimensions:
+      - name: release_date
+        label: Release date
+        type: time
+        type_params:
+          time_granularity: day
+      - name: essay_window
+        label: Essay window
+        description: before (30 days before 12 Sep 2026), after (30 days after), essay_day or outside.
+        type: categorical
+      - name: essay_period
+        label: Essay period (10-day, signed)
+        description: -3..-1 before the essay, +1..+3 after; equal 10-day periods.
+        type: categorical
+      - name: essay_period_label
+        label: Essay period
+        type: categorical
+      - name: days_from_essay
+        label: Days from essay
+        type: categorical
+      - name: model_name
+        label: Model
+        type: categorical
+      - name: tier_band
+        label: Tier band
+        description: flagship, upper, mid, small_fast or not_classified.
+        type: categorical
+      - name: tier_rank
+        label: Tier rank
+        type: categorical
+      - name: is_top_tier
+        label: Top tier
+        type: categorical
+      - name: top_tier_kind
+        label: Top-tier kind
+        description: new_flagship, flagship_refresh, below_flagship or not_assessed.
+        type: categorical
+      - name: access_level
+        label: Access level at announcement
+        type: categorical
+      - name: is_generally_available
+        label: Generally available
+        type: categorical
+      - name: is_restricted_access
+        label: Restricted access
+        type: categorical
+      - name: is_announced_only
+        label: Announced only
+        type: categorical
+      - name: has_gated_variant
+        label: Has gated variant
+        type: categorical
+      - name: open_weights_status
+        label: Open weights status
+        type: categorical
+      - name: is_open_weights
+        label: Open weights
+        type: categorical
+      - name: is_snapshot_update
+        label: Snapshot update
+        type: categorical
+      - name: is_staggered_rollout
+        label: Staggered rollout
+        type: categorical
+      - name: launch_event
+        label: Launch event
+        type: categorical
+      - name: release_weekday
+        label: Weekday
+        type: categorical
+      - name: is_weekend
+        label: Weekend release
+        type: categorical
+      - name: is_counted
+        label: Counted (main definition)
+        type: categorical
+      - name: exclusion_category
+        label: Exclusion category
+        type: categorical
+      - name: is_borderline_lab
+        label: Borderline lab
+        type: categorical
+      - name: is_counted_released_only
+        label: Counted, released only
+        type: categorical
+      - name: is_counted_incl_borderline
+        label: Counted, incl. borderline labs
+        type: categorical
+      - name: has_date_conflict
+        label: Date conflict
+        type: categorical
+      - name: essay_window_alt_date
+        label: Essay window (conflicting dates)
+        description: The window under the conflicting dates in METHODOLOGY 7.1 (worst case).
+        type: categorical
+      - name: is_window_date_sensitive
+        label: Window depends on disputed date
+        type: categorical
+      - name: source_type
+        label: Source type
+        description: vendor, tracker, press or aggregator (METHODOLOGY 5).
+        type: categorical
+      - name: source_domain
+        label: Source domain
+        type: categorical
+    measures:
+      - name: release_count
+        label: Releases
+        description: Number of candidate rows; metrics narrow it with filters.
+        agg: sum
+        expr: "1"
+      - name: lab_count
+        label: Labs
+        description: Distinct labs among the rows a metric selects.
+        agg: count_distinct
+        expr: lab_id
+
+  - name: labs
+    description: One row per lab (dim_labs), with geography and recorded essay stance.
+    model: ref('dim_labs')
+    entities:
+      - name: lab
+        type: primary
+        expr: lab_id
+    dimensions:
+      - name: lab_name
+        label: Lab
+        type: categorical
+      - name: region
+        label: Region
+        type: categorical
+      - name: parent_country
+        label: Parent country
+        type: categorical
+      - name: essay_coordination_group
+        label: Essay coordination group
+        description: us_frontier_company, other_democracy or china.
+        type: categorical
+      - name: essay_stance
+        label: Essay stance
+        description: author, endorsed_publicly or none_recorded.
+        type: categorical
+      - name: is_author_or_endorser
+        label: Wrote or endorsed the essay
+        type: categorical
+      - name: lab_scope
+        label: Lab scope
+        type: categorical
+
+  - name: release_gaps
+    description: >
+      One row per pair of consecutive days with a counted release (rpt_release_gaps).
+      gap_position separates gaps inside each window from the one spanning the essay.
+    model: ref('rpt_release_gaps')
+    defaults:
+      agg_time_dimension: gap_end_date
+    entities:
+      - name: gap
+        type: primary
+        expr: gap_id
+    dimensions:
+      - name: gap_end_date
+        label: Gap end date
+        type: time
+        type_params:
+          time_granularity: day
+      - name: gap_position
+        label: Gap position
+        type: categorical
+      - name: start_window
+        label: Gap start window
+        type: categorical
+      - name: end_window
+        label: Gap end window
+        type: categorical
+    measures:
+      - name: gap_count
+        label: Gaps
+        agg: sum
+        expr: "1"
+      - name: max_gap_days
+        label: Longest gap (days)
+        agg: max
+        expr: gap_days
+      - name: avg_gap_days
+        label: Average gap (days)
+        agg: average
+        expr: gap_days
+
+  - name: rate_tests
+    description: >
+      One row per before/after comparison (rpt_rate_tests). Measures are per-comparison
+      values, so always group by rate_test__comparison_id; totals across comparisons mean nothing.
+    model: ref('rpt_rate_tests')
+    defaults:
+      agg_time_dimension: essay_date
+    entities:
+      - name: rate_test
+        type: primary
+        expr: comparison_id
+    dimensions:
+      - name: essay_date
+        label: Essay date
+        type: time
+        type_params:
+          time_granularity: day
+      - name: comparison_id
+        label: Comparison
+        type: categorical
+      - name: comparison_order
+        label: Comparison order
+        type: categorical
+      - name: comparison_group
+        label: Comparison group
+        type: categorical
+      - name: comparison_label
+        label: Comparison label
+        type: categorical
+    measures:
+      - name: test_before_count
+        label: Before
+        agg: max
+        expr: before_count
+      - name: test_after_count
+        label: After
+        agg: max
+        expr: after_count
+      - name: test_change
+        label: Change
+        agg: max
+        expr: change
+      - name: test_rate_ratio
+        label: Rate ratio (after / before)
+        agg: max
+        expr: rate_ratio
+      - name: test_p_value
+        label: p-value (two-sided, exact)
+        agg: max
+        expr: p_value_two_sided
+      - name: test_p_value_bonferroni
+        label: p-value (Bonferroni)
+        agg: max
+        expr: p_value_bonferroni
