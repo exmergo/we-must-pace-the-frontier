@@ -61,7 +61,7 @@ queries:
     metrics: [frontier_releases]
     group_by: [release__release_date, release__essay_window, lab__lab_name, release__model_name, release__top_tier_kind, release__access_level, release__has_gated_variant]
     where: "{{ Dimension('release__is_top_tier') }} = true"
-    order_by: [release__release_date]
+    order_by: [release__release_date, lab__lab_name, release__model_name]
 
   - id: g07_access_shares
     title: Access and openness shares by window
@@ -158,4 +158,4 @@ queries:
     viz: V2
     metrics: [frontier_releases]
     group_by: [release__release_date, release__days_from_essay, release__essay_window, lab__lab_name, lab__region, lab__essay_stance, release__model_name, release__tier_band, release__top_tier_kind, release__access_level, release__open_weights_status]
-    order_by: [release__release_date, lab__lab_name]
+    order_by: [release__release_date, lab__lab_name, release__model_name]

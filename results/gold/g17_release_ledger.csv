@@ -26,5 +26,5 @@ release__release_date__day,release__essay_window,release__days_from_essay,releas
 2026-09-30,after,18,Gemini 4 Argon,flagship,new_flagship,gated_or_restricted,none,Google DeepMind,US,none_recorded,1
 2026-10-06,after,24,Mistral Large 4,flagship,new_flagship,preview_or_limited,promised_later,Mistral AI,Europe,none_recorded,1
 2026-10-07,after,25,Claude Haiku 5.5,small_fast,below_flagship,general_availability,none,Anthropic,US,author,1
-2026-10-12,after,30,Muse Wonder Full,flagship,new_flagship,preview_or_limited,none,Meta,US,none_recorded,1
 2026-10-12,after,30,Muse Wonder,upper,below_flagship,general_availability,none,Meta,US,none_recorded,1
+2026-10-12,after,30,Muse Wonder Full,flagship,new_flagship,preview_or_limited,none,Meta,US,none_recorded,1
