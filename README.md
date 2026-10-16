@@ -17,8 +17,6 @@ On Saturday 12 September 2026, Anthropic CEO Dario Amodei published ["We Must Pa
 - **The mix moved, but not where the essay pointed.** Chinese labs went from 10 releases to 3, and open-weights releases from 6 to 1. US labs went from 5 to 10. None of these splits survives a correction for the 17 comparisons we ran (smallest p = 0.09), and the Chinese drop falls outside the essay's near-term asks, which target US and other democratic labs.
 - **Bottom line:** in this data the essay coincides with no slowdown in frontier releases. This is a descriptive finding, not a causal one. Release schedules are set months in advance, and the essay asked for evaluators, capability checkpoints and coordination rather than a release freeze, so a 30-day release count is a blunt instrument for its impact.
 
-> **[Insert Viz V1: headline, before vs after]** Paired bars for counted releases, top-tier releases, new flagships and labs shipping, before vs after. Data: [`results/gold/g01_headline.csv`](results/gold/g01_headline.csv)
-
 ## Contents
 
 1. [The essay in brief](#1-the-essay-in-brief)
@@ -116,9 +114,7 @@ Source: [`g04_release_gaps.csv`](results/gold/g04_release_gaps.csv).
 
 The quiet week across the essay date is exactly as long as two quiet weeks inside the before window (14 to 21 August and 3 to 10 September). Releases came slightly more often after the essay than before it.
 
-> **[Insert Viz V2: release timeline]** Daily counted releases from 13 Aug to 12 Oct with a vertical marker on 12 Sep; optionally overlay top-tier releases and label each release from the ledger. Data: [`results/gold/g02_daily_timeline.csv`](results/gold/g02_daily_timeline.csv) (daily, zero-filled), [`g03_ten_day_periods.csv`](results/gold/g03_ten_day_periods.csv) (10-day bars), [`g17_release_ledger.csv`](results/gold/g17_release_ledger.csv) (one row per release, for labels and tooltips)
-
-> **[Insert Viz V3: gaps between release days]** Bar or dot plot of the 19 gaps, highlighting the one spanning the essay. Data: [`results/gold/g04_release_gaps.csv`](results/gold/g04_release_gaps.csv) (summary by position); the gap-level rows are in the `marts_dev.rpt_release_gaps` table of the warehouse
+> **[Insert Viz 1: release timeline]** One mark per counted release on a date axis from 13 Aug to 12 Oct, with a vertical line on 12 Sep. Highlight and label the top-tier releases. This one chart shows the volume, the absence of a pause and the flagship cadence (sections 3.1 to 3.3). Data: [`results/gold/g17_release_ledger.csv`](results/gold/g17_release_ledger.csv) (one row per release) and [`g02_daily_timeline.csv`](results/gold/g02_daily_timeline.csv) (daily counts, zero-filled)
 
 ### 3.3 Capability: the same number of new flagships
 
@@ -157,10 +153,6 @@ The drop from 7 to 5 top-tier releases comes entirely from two snapshot refreshe
 
 One data point outside the counts: OpenAI's **GPT-6.1 Astra** was shelved in late September, before it was ever announced as a product. Press reports (WSJ, CNBC via [qcode.cc](https://qcode.cc/gpt-6-1-astra-cancelled)) attribute this to alignment regressions, not to the essay. It is recorded in the data as an excluded row.
 
-> **[Insert Viz V4: tier mix]** 100% stacked bars of tier band by window. Data: [`results/gold/g05_by_tier_band.csv`](results/gold/g05_by_tier_band.csv)
-
-> **[Insert Viz V5: flagship timeline]** One mark per top-tier release on a date axis, coloured by access level, shaped by new flagship vs refresh, with the essay date marked. Data: [`results/gold/g06_flagship_releases.csv`](results/gold/g06_flagship_releases.csv)
-
 ### 3.4 Access: flat overall, but open weights fell away
 
 A lab can respect the spirit of pacing without releasing fewer models, for example by gating a release or previewing it to a narrow audience first.
@@ -177,8 +169,6 @@ Source: [`g07_access_shares.csv`](results/gold/g07_access_shares.csv) and [`g08_
 - **Overall access did not tighten.** The restricted share moved from 5 of 15 releases to 5 of 14.
 - **New flagships were slightly more often restricted:** 3 of 5 before (GLM-5.3, Hy4 preview, GPT-6 Astra) and 4 of 5 after (Qwen4, Gemini 4 Argon, Mistral Large 4, Muse Wonder Full). That is a difference of one model. Among all top-tier releases the contrast looks sharper (4 of 7 generally available before, 1 of 5 after), but two of the four generally available "before" flagships were snapshot refreshes, which ship to everyone by nature.
 - **Open weights nearly vanished.** All six open-weights releases before the essay came from Chinese labs (Qwen, Z.ai, DeepSeek, Tencent). After it, the only one was Mistral Large 4, whose weights were promised for later. This is the largest proportional change in the study, and it is entirely a story about which labs shipped (section 3.6), not about any lab switching from open to closed.
-
-> **[Insert Viz V6: access mix]** Stacked bars of access level by window, split top tier vs not; a small multiple of open-weights releases by region and window. Data: [`results/gold/g07_access_shares.csv`](results/gold/g07_access_shares.csv), [`g08_access_mix.csv`](results/gold/g08_access_mix.csv), [`g11b_open_weights_by_region.csv`](results/gold/g11b_open_weights_by_region.csv)
 
 ### 3.5 Who shipped: the essay's backers shipped more
 
@@ -200,8 +190,6 @@ Taken together, the author and endorsers went from **2 releases to 7**. Their af
 
 So the labs behind the essay did not release fewer models. With one exception (xAI), what they released after the essay were smaller or mid-sized models below a flagship that already existed. That pattern fits "keep shipping products, don't push the capability frontier". It also fits the ordinary product cadence that follows any flagship launch, and this data cannot tell those two explanations apart.
 
-> **[Insert Viz V7: essay backers vs everyone else]** Slope chart (before to after) of releases per stance group, with a second panel for top-tier releases. Data: [`results/gold/g09_by_essay_stance.csv`](results/gold/g09_by_essay_stance.csv)
-
 ### 3.6 By lab
 
 | Lab | Region | Stance | Before | After | Change | Top tier before | Top tier after |
@@ -222,7 +210,7 @@ So the labs behind the essay did not release fewer models. With one exception (x
 
 Source: [`g10_by_lab.csv`](results/gold/g10_by_lab.csv). ByteDance has no release in either window, so it does not appear in the query result; it is added here from METHODOLOGY section 2.
 
-> **[Insert Viz V8: change by lab]** Diverging bar chart of after minus before per lab, sorted, coloured by region, with the essay's author and endorsers marked. Data: [`results/gold/g10_by_lab.csv`](results/gold/g10_by_lab.csv)
+> **[Insert Viz 2: change by lab]** Diverging bars of after minus before per lab, sorted, coloured by essay stance (author, endorsed, none recorded), with region as a label or facet. Covers sections 3.5 to 3.7. Data: [`results/gold/g10_by_lab.csv`](results/gold/g10_by_lab.csv)
 
 ### 3.7 Geography: the drop is in China, outside the essay's reach
 
@@ -235,8 +223,6 @@ Source: [`g10_by_lab.csv`](results/gold/g10_by_lab.csv). ByteDance has no releas
 Source: [`g11_by_region.csv`](results/gold/g11_by_region.csv).
 
 The essay's near-term asks (regulating US frontier companies, coordination among democracies) reach the US and European labs, and US output doubled. The labs the essay reaches only through its hardest, longest-range proposals, the Chinese labs, are where releases fell, from 10 to 3. If the essay had slowed anyone, this is the opposite of the expected pattern. More mundane explanations are available: the before window holds an unusually dense run of Chinese releases (DeepSeek, Qwen and Z.ai shipped eight models between 13 August and 10 September), and China's National Day holiday week begins on 1 October, inside the after window. Without a longer baseline we cannot say which window is the unusual one.
-
-> **[Insert Viz V9: region before vs after]** Grouped bars of releases by region and window, with labs shipping as a secondary series. Data: [`results/gold/g11_by_region.csv`](results/gold/g11_by_region.csv), [`g11b_open_weights_by_region.csv`](results/gold/g11b_open_weights_by_region.csv)
 
 ### 3.8 Is any of it more than noise?
 
@@ -261,7 +247,7 @@ Source: [`g12_significance.csv`](results/gold/g12_significance.csv), which also 
 
 No comparison reaches conventional significance, even before correcting for the number of tests. The two largest shifts (Chinese labs, open weights) are the same event seen twice, since every open-weights release before the essay was Chinese. With about 15 releases per window, the overall count would need to roughly halve or double to stand out from chance, and smaller segments need even larger swings.
 
-> **[Insert Viz V10: significance overview]** Dot plot of rate ratio (log scale) per comparison, with p-value encoded by fill and a reference line at 1. Data: [`results/gold/g12_significance.csv`](results/gold/g12_significance.csv)
+> **[Insert Viz 3: signal or noise]** Dot plot of rate ratio (after / before, log scale) per comparison, including the sensitivity rows, with the p-value as fill and a reference line at 1. Covers sections 3.8 and 3.9. Data: [`results/gold/g12_significance.csv`](results/gold/g12_significance.csv)
 
 ### 3.9 Does the definition change the answer?
 
@@ -276,8 +262,6 @@ No comparison reaches conventional significance, even before correcting for the 
 Source: [`g13_sensitivity_variants.csv`](results/gold/g13_sensitivity_variants.csv) and [`g14_worst_case_dates.csv`](results/gold/g14_worst_case_dates.csv).
 
 The direction of the change depends on the definition, and its size never exceeds two models. This matches METHODOLOGY section 7.2, which the dbt tests reproduce exactly.
-
-> **[Insert Viz V11: sensitivity]** Dumbbell chart of before vs after per definition. Data: [`results/gold/g13_sensitivity_variants.csv`](results/gold/g13_sensitivity_variants.csv), [`g14_worst_case_dates.csv`](results/gold/g14_worst_case_dates.csv)
 
 ### 3.10 What the definition leaves out, and how strong the evidence is
 
@@ -304,8 +288,6 @@ Counting everything the labs announced, including non-language models and the bo
 Source: [`g16_evidence_quality.csv`](results/gold/g16_evidence_quality.csv).
 
 Only one counted release rests mainly on a vendor page. Two counted releases (Gemini 3.7 Flash and Qwen3.8-27B) rest mainly on aggregator pages, which METHODOLOGY ranks lowest ("corroboration only, never the date"). Both fall on the first two days of the before window, so a one- or two-day error in either date would move it out of the study. Together with the two disputed dates in section 3.9, four of the 15 "before" releases sit close enough to the window edge to matter.
-
-> **[Insert Viz V12: exclusions and evidence]** Stacked bars of excluded candidates by reason and window; a small bar chart of main source type for counted rows. Data: [`results/gold/g15_exclusions.csv`](results/gold/g15_exclusions.csv), [`g16_evidence_quality.csv`](results/gold/g16_evidence_quality.csv)
 
 ## 4. What this does and does not show
 
@@ -344,8 +326,6 @@ marts_dev: fct_release_candidates, dim_labs, rpt_release_gaps, rpt_rate_tests, m
         v
 semantic/gold_queries.yml  -->  dex explore semantic query  -->  results/gold/*.csv
 ```
-
-> **[Insert Viz V13: lineage]** Model lineage from raw to gold queries (the dbt DAG plus the semantic layer). The structure above is the source of truth.
 
 **Explore.** `dex explore map` and `explore profile` on the raw table established the grain (one row per model), confirmed every date parses, and surfaced two problems before any SQL was written. First, `window` is a reserved word in DuckDB, so it has to be renamed and quoted. Second, DuckDB's CSV sniffer would silently cast the yes/no flags to booleans, so the loader keeps every column as text and staging owns the casts. Probes confirmed the window column matches the dates on all 52 rows and that every excluded row carries a reason. Dex's PII screen flagged lab names and research notes; a human reviewed and cleared them in [`.dex/config.yml`](.dex/config.yml), with the reason recorded.
 

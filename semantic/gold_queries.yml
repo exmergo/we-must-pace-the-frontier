@@ -4,7 +4,8 @@
 # `make gold` writes one CSV per entry to results/gold/<id>.csv (Viz reads these) and an
 # index to results/gold/README.md. Every number in the top-level README comes from here.
 #
-# Fields: id, title, question (what it answers), viz (the README placeholder it feeds),
+# Fields: id, title, question (what it answers), viz (the README chart it feeds, if any;
+# the other queries back README tables),
 # metrics, group_by, where (MetricFlow filter dialect, optional), order_by (optional,
 # prefix "-" for descending), where_chunks (optional: Dex returns at most 50 rows per query,
 # its query.max_rows default, so a longer series is fetched as one query per chunk filter and
@@ -14,7 +15,6 @@ queries:
   - id: g01_headline
     title: Headline counts, 30 days before vs after
     question: Did the number of frontier model releases change after the essay?
-    viz: V1
     metrics: [frontier_releases, top_tier_releases, new_flagship_releases, labs_shipping, generally_available_releases, restricted_access_releases, open_weights_releases]
     group_by: [release__essay_window]
     order_by: [-release__essay_window]
@@ -22,7 +22,7 @@ queries:
   - id: g02_daily_timeline
     title: Releases per day, 13 Aug to 12 Oct 2026
     question: Was there a pause around the essay date (12 Sep)?
-    viz: V2
+    viz: V1
     metrics: [frontier_releases_daily, top_tier_releases_daily]
     group_by: [metric_time__day]
     where_chunks:
@@ -33,7 +33,6 @@ queries:
   - id: g03_ten_day_periods
     title: Releases per 10-day period around the essay
     question: How did release volume move through each window, in equal 10-day steps?
-    viz: V2
     metrics: [frontier_releases, top_tier_releases]
     group_by: [release__essay_period, release__essay_period_label]
     order_by: [release__essay_period]
@@ -41,7 +40,6 @@ queries:
   - id: g04_release_gaps
     title: Gaps between consecutive release days
     question: Was the quiet stretch across the essay date unusual?
-    viz: V3
     metrics: [release_gaps, longest_gap_days, average_gap_days]
     group_by: [gap__gap_position]
     order_by: [gap__gap_position]
@@ -49,7 +47,6 @@ queries:
   - id: g05_by_tier_band
     title: Releases by tier band and window
     question: Did the mix shift between flagship, upper, mid and small or fast models?
-    viz: V4
     metrics: [frontier_releases]
     group_by: [release__essay_window, release__tier_band, release__tier_rank]
     order_by: [-release__essay_window, release__tier_rank]
@@ -57,7 +54,6 @@ queries:
   - id: g06_flagship_releases
     title: Every top-tier release, with access level
     question: Which flagships shipped in each window, and how open was access to them?
-    viz: V5
     metrics: [frontier_releases]
     group_by: [release__release_date, release__essay_window, lab__lab_name, release__model_name, release__top_tier_kind, release__access_level, release__has_gated_variant]
     where: "{{ Dimension('release__is_top_tier') }} = true"
@@ -66,7 +62,6 @@ queries:
   - id: g07_access_shares
     title: Access and openness shares by window
     question: Were models released more cautiously (gated, preview, announced only) after the essay?
-    viz: V6
     metrics: [frontier_releases, generally_available_share, restricted_access_share, open_weights_share, top_tier_share]
     group_by: [release__essay_window]
     order_by: [-release__essay_window]
@@ -74,7 +69,6 @@ queries:
   - id: g08_access_mix
     title: Releases by access level, tier and window
     question: Where did restricted access concentrate, flagships or smaller models?
-    viz: V6
     metrics: [frontier_releases]
     group_by: [release__essay_window, release__access_level, release__is_top_tier]
     order_by: [-release__essay_window, release__access_level, release__is_top_tier]
@@ -82,7 +76,6 @@ queries:
   - id: g09_by_essay_stance
     title: Before vs after by the lab's public stance on the essay
     question: Did the labs that wrote or endorsed the essay slow down?
-    viz: V7
     metrics: [frontier_releases_before, frontier_releases_after, frontier_releases_change, top_tier_releases_before, top_tier_releases_after, top_tier_releases_change, new_flagship_releases_before, new_flagship_releases_after, labs_shipping_before, labs_shipping_after]
     group_by: [lab__is_author_or_endorser, lab__essay_stance]
     order_by: [-lab__is_author_or_endorser, lab__essay_stance]
@@ -90,7 +83,7 @@ queries:
   - id: g10_by_lab
     title: Before vs after by lab
     question: Which labs shipped more, and which shipped less, after the essay?
-    viz: V8
+    viz: V2
     metrics: [frontier_releases_before, frontier_releases_after, frontier_releases_change, top_tier_releases_before, top_tier_releases_after]
     group_by: [lab__lab_name, lab__region, lab__essay_stance]
     order_by: [frontier_releases_change, lab__lab_name]
@@ -98,7 +91,6 @@ queries:
   - id: g11_by_region
     title: Before vs after by region and essay coordination group
     question: Did the change fall on the labs the essay's coordination proposals reach?
-    viz: V9
     metrics: [frontier_releases_before, frontier_releases_after, frontier_releases_change, top_tier_releases_before, top_tier_releases_after, labs_shipping_before, labs_shipping_after]
     group_by: [lab__region, lab__essay_coordination_group]
     order_by: [lab__region]
@@ -106,7 +98,6 @@ queries:
   - id: g11b_open_weights_by_region
     title: Open-weights releases by region and window
     question: Who stopped shipping open weights?
-    viz: V9
     metrics: [frontier_releases, open_weights_releases]
     group_by: [release__essay_window, lab__region]
     order_by: [-release__essay_window, lab__region]
@@ -114,7 +105,7 @@ queries:
   - id: g12_significance
     title: Exact tests of equal release rates, by segment
     question: Is any before/after difference larger than chance would produce?
-    viz: V10
+    viz: V3
     metrics: [rate_test_before, rate_test_after, rate_test_change, rate_test_rate_ratio, rate_test_p_value, rate_test_p_value_bonferroni]
     group_by: [rate_test__comparison_order, rate_test__comparison_id, rate_test__comparison_group, rate_test__comparison_label]
     order_by: [rate_test__comparison_order]
@@ -122,7 +113,6 @@ queries:
   - id: g13_sensitivity_variants
     title: Counts under the METHODOLOGY 7.2 definitions
     question: Does the answer depend on how a frontier release is defined?
-    viz: V11
     metrics: [frontier_releases, top_tier_releases, frontier_releases_released_only, frontier_releases_incl_borderline]
     group_by: [release__essay_window]
     where: "{{ Dimension('release__essay_window') }} in ('before', 'after')"
@@ -131,7 +121,6 @@ queries:
   - id: g14_worst_case_dates
     title: Counts with the disputed dates moved
     question: Does the answer survive the two rows whose date decides their window?
-    viz: V11
     metrics: [frontier_releases]
     group_by: [release__essay_window_alt_date]
     order_by: [-release__essay_window_alt_date]
@@ -139,7 +128,6 @@ queries:
   - id: g15_exclusions
     title: Excluded candidates by reason and window
     question: What did the definition leave out, and could that hide a change?
-    viz: V12
     metrics: [release_candidates, excluded_candidates]
     group_by: [release__essay_window, release__exclusion_category]
     order_by: [-release__essay_window, release__exclusion_category]
@@ -147,7 +135,6 @@ queries:
   - id: g16_evidence_quality
     title: Main source type of every candidate row
     question: How strong is the evidence behind each row?
-    viz: V12
     metrics: [release_candidates, frontier_releases]
     group_by: [release__source_type]
     order_by: [release__source_type]
@@ -155,7 +142,7 @@ queries:
   - id: g17_release_ledger
     title: Every counted release, one row each
     question: What exactly was released, by whom, when, and how?
-    viz: V2
+    viz: V1
     metrics: [frontier_releases]
     group_by: [release__release_date, release__days_from_essay, release__essay_window, lab__lab_name, lab__region, lab__essay_stance, release__model_name, release__tier_band, release__top_tier_kind, release__access_level, release__open_weights_status]
     order_by: [release__release_date, lab__lab_name, release__model_name]
