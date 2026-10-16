@@ -1,0 +1,16 @@
+# Python / uv
+.venv/
+__pycache__/
+*.pyc
+
+# dbt build output
+target/
+logs/
+dbt_packages/
+.user.yml
+
+# DuckDB write-ahead log (the .duckdb file itself is committed on purpose)
+*.duckdb.wal
+
+# OS
+.DS_Store
