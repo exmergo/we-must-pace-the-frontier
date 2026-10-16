@@ -131,7 +131,16 @@ seeds:
         conflicting_date: date
     columns:
       - name: model_name
-        data_tests: [unique, not_null]
+        description: >
+          Model name exactly as in the research. Every row must name a real candidate, since
+          the enrichment joins on it (most candidates have no row here, by design).
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_research__release_candidates')
+                field: model_name
       - name: date_used
       - name: conflicting_date
       - name: conflicting_date_source

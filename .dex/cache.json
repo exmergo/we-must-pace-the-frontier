@@ -1274,7 +1274,7 @@
           "detail": "launch_event is 96.2% NULL"
         }
       ],
-      "profiled_at": "2026-10-16T09:55:01.078817+00:00",
+      "profiled_at": "2026-10-16T10:03:31.438245+00:00",
       "semantic_models": []
     },
     {
@@ -1550,8 +1550,10 @@
           "detail": "lab_id participates in the detected grain but the warehouse still allows it to be NULL"
         }
       ],
-      "profiled_at": "2026-10-16T09:55:01.195780+00:00",
-      "semantic_models": []
+      "profiled_at": "2026-10-16T10:03:31.560662+00:00",
+      "semantic_models": [
+        "labs"
+      ]
     },
     {
       "identifier": "pace_the_frontier.marts_dev.fct_release_candidates",
@@ -2702,7 +2704,7 @@
           "reason": "model_name is unique and non-null on all 52 rows, proven by an exact distinct count"
         }
       ],
-      "rank_score": 0.6754,
+      "rank_score": 0.7054,
       "data_quality": [],
       "findings": [
         {
@@ -2718,8 +2720,10 @@
           "detail": "launch_event is 96.2% NULL"
         }
       ],
-      "profiled_at": "2026-10-16T09:55:01.509895+00:00",
-      "semantic_models": []
+      "profiled_at": "2026-10-16T10:03:31.853681+00:00",
+      "semantic_models": [
+        "release_candidates"
+      ]
     },
     {
       "identifier": "pace_the_frontier.marts_dev.metricflow_time_spine",
@@ -2775,7 +2779,7 @@
           "detail": "date_day participates in the detected grain but the warehouse still allows it to be NULL"
         }
       ],
-      "profiled_at": "2026-10-16T09:55:01.518786+00:00",
+      "profiled_at": "2026-10-16T10:03:31.862149+00:00",
       "semantic_models": []
     },
     {
@@ -2861,6 +2865,33 @@
           "temporal_largest_gap": null
         },
         {
+          "name": "essay_date",
+          "data_type": "DATE",
+          "nullable": true,
+          "null_fraction": 0.0,
+          "distinct_count": 1,
+          "distinct_count_exact": false,
+          "is_unique": false,
+          "min_value": "2026-09-12",
+          "max_value": "2026-09-12",
+          "pii": null,
+          "pii_overridden": null,
+          "value_domain": {
+            "values": [
+              {
+                "value": "2026-09-12",
+                "count": 17
+              }
+            ],
+            "elided": 0
+          },
+          "temporal_granularity": "day",
+          "temporal_span": 1,
+          "temporal_distinct_periods": 1,
+          "temporal_missing_periods": 0,
+          "temporal_largest_gap": 0
+        },
+        {
           "name": "before_count",
           "data_type": "BIGINT",
           "nullable": true,
@@ -2941,10 +2972,10 @@
           "data_type": "DOUBLE",
           "nullable": true,
           "null_fraction": 0.0,
-          "distinct_count": 13,
-          "distinct_count_exact": true,
+          "distinct_count": 10,
+          "distinct_count_exact": false,
           "is_unique": false,
-          "min_value": 0.09228515624999989,
+          "min_value": 0.0923,
           "max_value": 1.0,
           "pii": null,
           "pii_overridden": null,
@@ -3021,7 +3052,7 @@
           "reason": "comparison_label is unique and non-null on all 17 rows, proven by an exact distinct count"
         }
       ],
-      "rank_score": 0.4214,
+      "rank_score": 0.5214,
       "data_quality": [],
       "findings": [
         {
@@ -3031,8 +3062,10 @@
           "detail": "comparison_id participates in the detected grain but the warehouse still allows it to be NULL"
         }
       ],
-      "profiled_at": "2026-10-16T09:55:01.558996+00:00",
-      "semantic_models": []
+      "profiled_at": "2026-10-16T10:03:31.933769+00:00",
+      "semantic_models": [
+        "rate_tests"
+      ]
     },
     {
       "identifier": "pace_the_frontier.marts_dev.rpt_release_gaps",
@@ -3250,7 +3283,7 @@
           "reason": "gap_end_date is unique and non-null on all 19 rows, proven by an exact distinct count"
         }
       ],
-      "rank_score": 0.4276,
+      "rank_score": 0.5276,
       "data_quality": [],
       "findings": [
         {
@@ -3260,8 +3293,10 @@
           "detail": "gap_id participates in the detected grain but the warehouse still allows it to be NULL"
         }
       ],
-      "profiled_at": "2026-10-16T09:55:01.624791+00:00",
-      "semantic_models": []
+      "profiled_at": "2026-10-16T10:03:31.997826+00:00",
+      "semantic_models": [
+        "release_gaps"
+      ]
     },
     {
       "identifier": "pace_the_frontier.raw.frontier_model_candidates",
@@ -3584,7 +3619,7 @@
           "detail": "model participates in the detected grain but the warehouse still allows it to be NULL"
         }
       ],
-      "profiled_at": "2026-10-16T09:55:01.774026+00:00",
+      "profiled_at": "2026-10-16T10:03:32.149934+00:00",
       "semantic_models": []
     },
     {
@@ -3728,7 +3763,7 @@
           "detail": "model_name participates in the detected grain but the warehouse still allows it to be NULL"
         }
       ],
-      "profiled_at": "2026-10-16T09:55:01.814656+00:00",
+      "profiled_at": "2026-10-16T10:03:32.189577+00:00",
       "semantic_models": []
     },
     {
@@ -3966,7 +4001,7 @@
           "detail": "lab_id participates in the detected grain but the warehouse still allows it to be NULL"
         }
       ],
-      "profiled_at": "2026-10-16T09:55:01.901746+00:00",
+      "profiled_at": "2026-10-16T10:03:32.267409+00:00",
       "semantic_models": []
     },
     {
@@ -4154,7 +4189,7 @@
           "detail": "release_type participates in the detected grain but the warehouse still allows it to be NULL"
         }
       ],
-      "profiled_at": "2026-10-16T09:55:01.954997+00:00",
+      "profiled_at": "2026-10-16T10:03:32.304588+00:00",
       "semantic_models": []
     },
     {
@@ -4249,7 +4284,7 @@
           "detail": "source_domain participates in the detected grain but the warehouse still allows it to be NULL"
         }
       ],
-      "profiled_at": "2026-10-16T09:55:01.978480+00:00",
+      "profiled_at": "2026-10-16T10:03:32.354681+00:00",
       "semantic_models": []
     },
     {
@@ -4344,7 +4379,7 @@
           "detail": "tier participates in the detected grain but the warehouse still allows it to be NULL"
         }
       ],
-      "profiled_at": "2026-10-16T09:55:02.000710+00:00",
+      "profiled_at": "2026-10-16T10:03:32.377107+00:00",
       "semantic_models": []
     },
     {
@@ -4733,7 +4768,7 @@
           "detail": "release_id participates in the detected grain but the warehouse still allows it to be NULL"
         }
       ],
-      "profiled_at": "2026-10-16T09:55:02.175063+00:00",
+      "profiled_at": "2026-10-16T10:03:32.556917+00:00",
       "semantic_models": []
     }
   ],
@@ -4928,7 +4963,7 @@
   "provenance": {
     "connector": "duckdb",
     "created_at": "2026-10-16T09:31:05.012089+00:00",
-    "updated_at": "2026-10-16T09:55:00.457490+00:00",
+    "updated_at": "2026-10-16T10:03:30.826302+00:00",
     "tool_version": "0.0.0",
     "inventory_namespaces": [
       "pace_the_frontier.intermediate_dev",

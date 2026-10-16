@@ -5,10 +5,72 @@ models:
     description: >
       Staged candidates joined to the mapping seeds, with every derived field the analysis
       uses: timing relative to the essay, normalized tier and access, exclusion category,
-      the date-sensitivity windows and the METHODOLOGY 7.2 counting variants.
+      the date-sensitivity windows and the METHODOLOGY 7.2 counting variants. The join to
+      seed_date_sensitivity is a lookup of 4 exception rows, so most rows match nothing there
+      by design. The marts expose these columns under the same names (see fct_release_candidates).
     columns:
       - name: release_id
+        description: Surrogate key, slugify(developer) || '__' || slugify(model).
         data_tests: [unique, not_null]
+      - name: lab_id
+        description: Lab key.
+      - name: developer_name
+        description: Lab name as written in the research.
+      - name: model_name
+        description: Model name as written in the research.
+      - name: release_date
+        description: Announcement date (METHODOLOGY 4.5).
+      - name: source_essay_window
+        description: Window the researcher recorded; tested against essay_window.
+      - name: is_counted
+        description: Meets the inclusion rules (METHODOLOGY 4.2).
+      - name: is_top_tier
+        description: The researcher's top_tier flag; null on excluded rows.
+      - name: tier
+        description: Lineup position as written in the research.
+      - name: release_type
+        description: Release type as written in the research.
+      - name: notes
+        description: Research notes as written.
+      - name: source_url
+        description: Main supporting source.
+      - name: source_domain
+        description: Host of source_url.
+      - name: _source_file
+        description: File the raw row was loaded from.
+      - name: _loaded_at
+        description: Raw load timestamp.
+      - name: access_level
+        description: Normalized access on the counted date (seed_release_type_map).
+        data_tests: [not_null]
+      - name: open_weights_status
+        description: at_launch, promised_later or none.
+      - name: has_gated_variant
+        description: The same model also shipped at a restricted access level.
+      - name: is_snapshot_update
+        description: Point release or snapshot update of an existing model.
+      - name: is_staggered_rollout
+        description: Wider access or weights announced for later dates.
+      - name: tier_band
+        description: flagship, upper, mid, small_fast or not_classified.
+      - name: tier_rank
+        description: 1 flagship, 2 upper, 3 mid, 4 small or fast.
+      - name: is_borderline_lab
+        description: Developer is one of the four borderline labs.
+        data_tests: [not_null]
+      - name: source_type
+        description: vendor, tracker, press or aggregator.
+        data_tests: [not_null]
+      - name: source_rank
+        description: 1 vendor, 2 tracker, 3 press, 4 aggregator.
+      - name: conflicting_date
+        description: The disputed alternative date (METHODOLOGY 7.1); null for most rows.
+      - name: days_from_essay
+        description: release_date minus the essay date, in days.
+      - name: alt_release_date
+        description: conflicting_date where one exists, otherwise release_date.
+      - name: days_from_essay_alt_date
+        description: alt_release_date minus the essay date.
       - name: essay_window
         description: Window re-derived from release_date with the essay_window macro.
         data_tests:
@@ -16,9 +78,35 @@ models:
           - accepted_values:
               arguments:
                 values: [before, after, essay_day, outside]
-      - name: access_level
-        data_tests: [not_null]
-      - name: source_type
-        data_tests: [not_null]
-      - name: is_borderline_lab
-        data_tests: [not_null]
+      - name: essay_window_alt_date
+        description: Window under the conflicting dates.
+      - name: essay_period
+        description: Signed 10-day period of days_from_essay.
+      - name: essay_period_label
+        description: Readable label for essay_period.
+      - name: release_weekday
+        description: Day of the week of release_date.
+      - name: is_weekend
+        description: Released on a Saturday or Sunday.
+      - name: has_date_conflict
+        description: Credible sources disagree on the date.
+      - name: is_generally_available
+        description: access_level = general_availability.
+      - name: is_restricted_access
+        description: Preview or limited, gated or restricted, or announced only.
+      - name: is_announced_only
+        description: Announced, not released.
+      - name: is_open_weights
+        description: Weights at launch or promised for later.
+      - name: top_tier_kind
+        description: new_flagship, flagship_refresh, below_flagship or not_assessed.
+      - name: launch_event
+        description: Event named in the research notes, when there is one.
+      - name: exclusion_category
+        description: METHODOLOGY 4.3 category for excluded rows; null for counted rows.
+      - name: is_window_date_sensitive
+        description: The conflicting date would move the row to a different window.
+      - name: is_counted_released_only
+        description: Main definition minus announced-only models.
+      - name: is_counted_incl_borderline
+        description: Main definition plus the borderline labs' in-window releases.

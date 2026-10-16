@@ -1,0 +1,5655 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-16T10:03:33.037278+00:00",
+  "connector": "duckdb",
+  "tool_version": "0.0.0",
+  "warehouse": {
+    "datasets": [
+      {
+        "identifier": "pace_the_frontier.intermediate_dev.int_release_candidates__enriched",
+        "object_type": "table",
+        "row_count": 52,
+        "byte_size": null,
+        "columns": [
+          {
+            "name": "release_id",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 52,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "lab_id",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 17,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "developer_name",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 16,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": "name",
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "model_name",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 52,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "release_date",
+            "data_type": "DATE",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 26,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": "2026-08-12",
+            "max_value": "2026-10-12",
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": "day",
+            "temporal_span": 62,
+            "temporal_distinct_periods": 28,
+            "temporal_missing_periods": 34,
+            "temporal_largest_gap": 6
+          },
+          {
+            "name": "source_essay_window",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 3,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "after",
+                  "count": 31
+                },
+                {
+                  "value": "before",
+                  "count": 20
+                },
+                {
+                  "value": "outside",
+                  "count": 1
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_counted",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": true,
+                  "count": 29
+                },
+                {
+                  "value": false,
+                  "count": 23
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_top_tier",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.4423076923076923,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 17
+                },
+                {
+                  "value": true,
+                  "count": 12
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "tier",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.40384615384615385,
+            "distinct_count": 16,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "release_type",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 30,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "notes",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.09615384615384615,
+            "distinct_count": 41,
+            "distinct_count_exact": true,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": "free_text",
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "source_url",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 22,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "source_domain",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 18,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "_source_file",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 1,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "data/frontier_models_pace_the_frontier.csv",
+                  "count": 52
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "_loaded_at",
+            "data_type": "TIMESTAMP WITH TIME ZONE",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 1,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": "2026-10-16T11:30:27.341249+02:00",
+            "max_value": "2026-10-16T11:30:27.341249+02:00",
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "2026-10-16T11:30:27.341249+02:00",
+                  "count": 52
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": "hour",
+            "temporal_span": 1,
+            "temporal_distinct_periods": 1,
+            "temporal_missing_periods": 0,
+            "temporal_largest_gap": 0
+          },
+          {
+            "name": "access_level",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 6,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "open_weights_status",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 3,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "none",
+                  "count": 41
+                },
+                {
+                  "value": "at_launch",
+                  "count": 8
+                },
+                {
+                  "value": "promised_later",
+                  "count": 3
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "has_gated_variant",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 50
+                },
+                {
+                  "value": true,
+                  "count": 2
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_snapshot_update",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 50
+                },
+                {
+                  "value": true,
+                  "count": 2
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_staggered_rollout",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 47
+                },
+                {
+                  "value": true,
+                  "count": 5
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "tier_band",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 5,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "not_classified",
+                  "count": 21
+                },
+                {
+                  "value": "flagship",
+                  "count": 14
+                },
+                {
+                  "value": "small_fast",
+                  "count": 11
+                },
+                {
+                  "value": "mid",
+                  "count": 4
+                },
+                {
+                  "value": "upper",
+                  "count": 2
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "tier_rank",
+            "data_type": "INTEGER",
+            "nullable": true,
+            "null_fraction": 0.40384615384615385,
+            "distinct_count": 4,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": 1,
+            "max_value": 4,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_borderline_lab",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 47
+                },
+                {
+                  "value": true,
+                  "count": 5
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "source_type",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "tracker",
+                  "count": 27
+                },
+                {
+                  "value": "press",
+                  "count": 15
+                },
+                {
+                  "value": "aggregator",
+                  "count": 9
+                },
+                {
+                  "value": "vendor",
+                  "count": 1
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "source_rank",
+            "data_type": "INTEGER",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": 1,
+            "max_value": 4,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": 2,
+                  "count": 27
+                },
+                {
+                  "value": 3,
+                  "count": 15
+                },
+                {
+                  "value": 4,
+                  "count": 9
+                },
+                {
+                  "value": 1,
+                  "count": 1
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "conflicting_date",
+            "data_type": "DATE",
+            "nullable": true,
+            "null_fraction": 0.9230769230769231,
+            "distinct_count": 4,
+            "distinct_count_exact": true,
+            "is_unique": false,
+            "min_value": "2026-08-07",
+            "max_value": "2026-09-20",
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": "day",
+            "temporal_span": 45,
+            "temporal_distinct_periods": 4,
+            "temporal_missing_periods": 41,
+            "temporal_largest_gap": 30
+          },
+          {
+            "name": "days_from_essay",
+            "data_type": "BIGINT",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 26,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": -31,
+            "max_value": 30,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "alt_release_date",
+            "data_type": "DATE",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 27,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": "2026-08-07",
+            "max_value": "2026-10-12",
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": "day",
+            "temporal_span": 67,
+            "temporal_distinct_periods": 30,
+            "temporal_missing_periods": 37,
+            "temporal_largest_gap": 6
+          },
+          {
+            "name": "days_from_essay_alt_date",
+            "data_type": "BIGINT",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 29,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": -36,
+            "max_value": 30,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "essay_window",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 3,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "after",
+                  "count": 31
+                },
+                {
+                  "value": "before",
+                  "count": 20
+                },
+                {
+                  "value": "outside",
+                  "count": 1
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "essay_window_alt_date",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "after",
+                  "count": 31
+                },
+                {
+                  "value": "before",
+                  "count": 18
+                },
+                {
+                  "value": "outside",
+                  "count": 2
+                },
+                {
+                  "value": "essay_day",
+                  "count": 1
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "essay_period",
+            "data_type": "INTEGER",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 7,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": -4,
+            "max_value": 3,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "release_weekday",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 6,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_weekend",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 50
+                },
+                {
+                  "value": true,
+                  "count": 2
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "has_date_conflict",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 48
+                },
+                {
+                  "value": true,
+                  "count": 4
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_generally_available",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": true,
+                  "count": 33
+                },
+                {
+                  "value": false,
+                  "count": 19
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_restricted_access",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 39
+                },
+                {
+                  "value": true,
+                  "count": 13
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_announced_only",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 51
+                },
+                {
+                  "value": true,
+                  "count": 1
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_open_weights",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 41
+                },
+                {
+                  "value": true,
+                  "count": 11
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "top_tier_kind",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "not_assessed",
+                  "count": 23
+                },
+                {
+                  "value": "below_flagship",
+                  "count": 17
+                },
+                {
+                  "value": "new_flagship",
+                  "count": 10
+                },
+                {
+                  "value": "flagship_refresh",
+                  "count": 2
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "launch_event",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.9615384615384616,
+            "distinct_count": 2,
+            "distinct_count_exact": true,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "essay_period_label",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 7,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "exclusion_category",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.5576923076923077,
+            "distinct_count": 9,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_window_date_sensitive",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 50
+                },
+                {
+                  "value": true,
+                  "count": 2
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_counted_released_only",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": true,
+                  "count": 28
+                },
+                {
+                  "value": false,
+                  "count": 24
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_counted_incl_borderline",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": true,
+                  "count": 34
+                },
+                {
+                  "value": false,
+                  "count": 18
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          }
+        ],
+        "candidate_keys": [
+          [
+            "release_id"
+          ],
+          [
+            "model_name"
+          ]
+        ],
+        "grain": [
+          "release_id"
+        ],
+        "composite_keys": [],
+        "key_evidence": [
+          {
+            "columns": [
+              "release_id"
+            ],
+            "status": "reported",
+            "reason": "release_id is unique and non-null on all 52 rows, proven by an exact distinct count"
+          },
+          {
+            "columns": [
+              "model_name"
+            ],
+            "status": "reported",
+            "reason": "model_name is unique and non-null on all 52 rows, proven by an exact distinct count"
+          }
+        ],
+        "rank_score": 0.37,
+        "data_quality": [],
+        "findings": [
+          {
+            "column": "release_id",
+            "code": "nullable_grain_column",
+            "severity": "medium",
+            "detail": "release_id participates in the detected grain but the warehouse still allows it to be NULL"
+          },
+          {
+            "column": "launch_event",
+            "code": "mostly_null_column",
+            "severity": "low",
+            "detail": "launch_event is 96.2% NULL"
+          }
+        ],
+        "profiled_at": "2026-10-16T10:03:31.438245+00:00",
+        "semantic_models": []
+      },
+      {
+        "identifier": "pace_the_frontier.marts_dev.dim_labs",
+        "object_type": "table",
+        "row_count": 17,
+        "byte_size": null,
+        "columns": [
+          {
+            "name": "lab_id",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 17,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "lab_name",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 17,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": "name",
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "in_scope_list",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "lab_scope",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "parent_country",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "region",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "essay_coordination_group",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 3,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "essay_stance",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 3,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_author_or_endorser",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "stance_date",
+            "data_type": "DATE",
+            "nullable": true,
+            "null_fraction": 0.8235294117647058,
+            "distinct_count": 1,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": "2026-09-12",
+            "max_value": "2026-09-12",
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": "day",
+            "temporal_span": 1,
+            "temporal_distinct_periods": 1,
+            "temporal_missing_periods": 0,
+            "temporal_largest_gap": 0
+          },
+          {
+            "name": "stance_quote",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.8823529411764706,
+            "distinct_count": 2,
+            "distinct_count_exact": true,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "stance_source_url",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.8235294117647058,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          }
+        ],
+        "candidate_keys": [
+          [
+            "lab_id"
+          ],
+          [
+            "lab_name"
+          ]
+        ],
+        "grain": [
+          "lab_id"
+        ],
+        "composite_keys": [],
+        "key_evidence": [
+          {
+            "columns": [
+              "lab_id"
+            ],
+            "status": "reported",
+            "reason": "lab_id is unique and non-null on all 17 rows, proven by an exact distinct count"
+          },
+          {
+            "columns": [
+              "lab_name"
+            ],
+            "status": "reported",
+            "reason": "lab_name is unique and non-null on all 17 rows, proven by an exact distinct count"
+          }
+        ],
+        "rank_score": 0.7914,
+        "data_quality": [],
+        "findings": [
+          {
+            "column": "lab_id",
+            "code": "nullable_grain_column",
+            "severity": "medium",
+            "detail": "lab_id participates in the detected grain but the warehouse still allows it to be NULL"
+          }
+        ],
+        "profiled_at": "2026-10-16T10:03:31.560662+00:00",
+        "semantic_models": [
+          "labs"
+        ]
+      },
+      {
+        "identifier": "pace_the_frontier.marts_dev.fct_release_candidates",
+        "object_type": "table",
+        "row_count": 52,
+        "byte_size": null,
+        "columns": [
+          {
+            "name": "release_id",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 52,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "lab_id",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 17,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "model_name",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 52,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "developer_name",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 16,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": "name",
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "tier",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.40384615384615385,
+            "distinct_count": 16,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "tier_band",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 5,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "not_classified",
+                  "count": 21
+                },
+                {
+                  "value": "flagship",
+                  "count": 14
+                },
+                {
+                  "value": "small_fast",
+                  "count": 11
+                },
+                {
+                  "value": "mid",
+                  "count": 4
+                },
+                {
+                  "value": "upper",
+                  "count": 2
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "tier_rank",
+            "data_type": "INTEGER",
+            "nullable": true,
+            "null_fraction": 0.40384615384615385,
+            "distinct_count": 4,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": 1,
+            "max_value": 4,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_top_tier",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.4423076923076923,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 17
+                },
+                {
+                  "value": true,
+                  "count": 12
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "top_tier_kind",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "not_assessed",
+                  "count": 23
+                },
+                {
+                  "value": "below_flagship",
+                  "count": 17
+                },
+                {
+                  "value": "new_flagship",
+                  "count": 10
+                },
+                {
+                  "value": "flagship_refresh",
+                  "count": 2
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "release_type",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 30,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "access_level",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 6,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_generally_available",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": true,
+                  "count": 33
+                },
+                {
+                  "value": false,
+                  "count": 19
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_restricted_access",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 39
+                },
+                {
+                  "value": true,
+                  "count": 13
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_announced_only",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 51
+                },
+                {
+                  "value": true,
+                  "count": 1
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "has_gated_variant",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 50
+                },
+                {
+                  "value": true,
+                  "count": 2
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "open_weights_status",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 3,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "none",
+                  "count": 41
+                },
+                {
+                  "value": "at_launch",
+                  "count": 8
+                },
+                {
+                  "value": "promised_later",
+                  "count": 3
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_open_weights",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 41
+                },
+                {
+                  "value": true,
+                  "count": 11
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_snapshot_update",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 50
+                },
+                {
+                  "value": true,
+                  "count": 2
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_staggered_rollout",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 47
+                },
+                {
+                  "value": true,
+                  "count": 5
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "launch_event",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.9615384615384616,
+            "distinct_count": 2,
+            "distinct_count_exact": true,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "release_date",
+            "data_type": "DATE",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 26,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": "2026-08-12",
+            "max_value": "2026-10-12",
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": "day",
+            "temporal_span": 62,
+            "temporal_distinct_periods": 28,
+            "temporal_missing_periods": 34,
+            "temporal_largest_gap": 6
+          },
+          {
+            "name": "days_from_essay",
+            "data_type": "BIGINT",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 26,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": -31,
+            "max_value": 30,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "essay_window",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 3,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "after",
+                  "count": 31
+                },
+                {
+                  "value": "before",
+                  "count": 20
+                },
+                {
+                  "value": "outside",
+                  "count": 1
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "essay_period",
+            "data_type": "INTEGER",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 7,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": -4,
+            "max_value": 3,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "essay_period_label",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 7,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "release_weekday",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 6,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_weekend",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 50
+                },
+                {
+                  "value": true,
+                  "count": 2
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_counted",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": true,
+                  "count": 29
+                },
+                {
+                  "value": false,
+                  "count": 23
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "exclusion_category",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.5576923076923077,
+            "distinct_count": 9,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_borderline_lab",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 47
+                },
+                {
+                  "value": true,
+                  "count": 5
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_counted_released_only",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": true,
+                  "count": 28
+                },
+                {
+                  "value": false,
+                  "count": 24
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_counted_incl_borderline",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": true,
+                  "count": 34
+                },
+                {
+                  "value": false,
+                  "count": 18
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "has_date_conflict",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 48
+                },
+                {
+                  "value": true,
+                  "count": 4
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "alt_release_date",
+            "data_type": "DATE",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 27,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": "2026-08-07",
+            "max_value": "2026-10-12",
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": "day",
+            "temporal_span": 67,
+            "temporal_distinct_periods": 30,
+            "temporal_missing_periods": 37,
+            "temporal_largest_gap": 6
+          },
+          {
+            "name": "days_from_essay_alt_date",
+            "data_type": "BIGINT",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 29,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": -36,
+            "max_value": 30,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "essay_window_alt_date",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "after",
+                  "count": 31
+                },
+                {
+                  "value": "before",
+                  "count": 18
+                },
+                {
+                  "value": "outside",
+                  "count": 2
+                },
+                {
+                  "value": "essay_day",
+                  "count": 1
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_window_date_sensitive",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 50
+                },
+                {
+                  "value": true,
+                  "count": 2
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "source_url",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 22,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "source_domain",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 18,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "source_type",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "tracker",
+                  "count": 27
+                },
+                {
+                  "value": "press",
+                  "count": 15
+                },
+                {
+                  "value": "aggregator",
+                  "count": 9
+                },
+                {
+                  "value": "vendor",
+                  "count": 1
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "source_rank",
+            "data_type": "INTEGER",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": 1,
+            "max_value": 4,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": 2,
+                  "count": 27
+                },
+                {
+                  "value": 3,
+                  "count": 15
+                },
+                {
+                  "value": 4,
+                  "count": 9
+                },
+                {
+                  "value": 1,
+                  "count": 1
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "notes",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.09615384615384615,
+            "distinct_count": 41,
+            "distinct_count_exact": true,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": "free_text",
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          }
+        ],
+        "candidate_keys": [
+          [
+            "release_id"
+          ],
+          [
+            "model_name"
+          ]
+        ],
+        "grain": [
+          "release_id"
+        ],
+        "composite_keys": [],
+        "key_evidence": [
+          {
+            "columns": [
+              "release_id"
+            ],
+            "status": "reported",
+            "reason": "release_id is unique and non-null on all 52 rows, proven by an exact distinct count"
+          },
+          {
+            "columns": [
+              "model_name"
+            ],
+            "status": "reported",
+            "reason": "model_name is unique and non-null on all 52 rows, proven by an exact distinct count"
+          }
+        ],
+        "rank_score": 0.7054,
+        "data_quality": [],
+        "findings": [
+          {
+            "column": "release_id",
+            "code": "nullable_grain_column",
+            "severity": "medium",
+            "detail": "release_id participates in the detected grain but the warehouse still allows it to be NULL"
+          },
+          {
+            "column": "launch_event",
+            "code": "mostly_null_column",
+            "severity": "low",
+            "detail": "launch_event is 96.2% NULL"
+          }
+        ],
+        "profiled_at": "2026-10-16T10:03:31.853681+00:00",
+        "semantic_models": [
+          "release_candidates"
+        ]
+      },
+      {
+        "identifier": "pace_the_frontier.marts_dev.metricflow_time_spine",
+        "object_type": "table",
+        "row_count": 365,
+        "byte_size": null,
+        "columns": [
+          {
+            "name": "date_day",
+            "data_type": "DATE",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 365,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": "2026-01-01",
+            "max_value": "2026-12-31",
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": "day",
+            "temporal_span": 365,
+            "temporal_distinct_periods": 365,
+            "temporal_missing_periods": 0,
+            "temporal_largest_gap": 0
+          }
+        ],
+        "candidate_keys": [
+          [
+            "date_day"
+          ]
+        ],
+        "grain": [
+          "date_day"
+        ],
+        "composite_keys": [],
+        "key_evidence": [
+          {
+            "columns": [
+              "date_day"
+            ],
+            "status": "reported",
+            "reason": "date_day is unique and non-null on all 365 rows, proven by an exact distinct count"
+          }
+        ],
+        "rank_score": 0.51,
+        "data_quality": [],
+        "findings": [
+          {
+            "column": "date_day",
+            "code": "nullable_grain_column",
+            "severity": "medium",
+            "detail": "date_day participates in the detected grain but the warehouse still allows it to be NULL"
+          }
+        ],
+        "profiled_at": "2026-10-16T10:03:31.862149+00:00",
+        "semantic_models": []
+      },
+      {
+        "identifier": "pace_the_frontier.marts_dev.rpt_rate_tests",
+        "object_type": "table",
+        "row_count": 17,
+        "byte_size": null,
+        "columns": [
+          {
+            "name": "comparison_order",
+            "data_type": "INTEGER",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 17,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": 1,
+            "max_value": 17,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "comparison_id",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 17,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "comparison_group",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 6,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "comparison_label",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 17,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "essay_date",
+            "data_type": "DATE",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 1,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": "2026-09-12",
+            "max_value": "2026-09-12",
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "2026-09-12",
+                  "count": 17
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": "day",
+            "temporal_span": 1,
+            "temporal_distinct_periods": 1,
+            "temporal_missing_periods": 0,
+            "temporal_largest_gap": 0
+          },
+          {
+            "name": "before_count",
+            "data_type": "BIGINT",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 12,
+            "distinct_count_exact": true,
+            "is_unique": false,
+            "min_value": 0,
+            "max_value": 16,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "after_count",
+            "data_type": "BIGINT",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 11,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": 1,
+            "max_value": 18,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "change",
+            "data_type": "BIGINT",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 10,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": -7,
+            "max_value": 5,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "rate_ratio",
+            "data_type": "DOUBLE",
+            "nullable": true,
+            "null_fraction": 0.05882352941176472,
+            "distinct_count": 14,
+            "distinct_count_exact": true,
+            "is_unique": false,
+            "min_value": 0.167,
+            "max_value": 3.5,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "p_value_two_sided",
+            "data_type": "DOUBLE",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 10,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": 0.0923,
+            "max_value": 1.0,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "p_value_bonferroni",
+            "data_type": "DOUBLE",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 1,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": 1.0,
+            "max_value": 1.0,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": 1.0,
+                  "count": 17
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          }
+        ],
+        "candidate_keys": [
+          [
+            "comparison_order"
+          ],
+          [
+            "comparison_id"
+          ],
+          [
+            "comparison_label"
+          ]
+        ],
+        "grain": [
+          "comparison_id"
+        ],
+        "composite_keys": [],
+        "key_evidence": [
+          {
+            "columns": [
+              "comparison_order"
+            ],
+            "status": "reported",
+            "reason": "comparison_order is unique and non-null on all 17 rows, proven by an exact distinct count"
+          },
+          {
+            "columns": [
+              "comparison_id"
+            ],
+            "status": "reported",
+            "reason": "comparison_id is unique and non-null on all 17 rows, proven by an exact distinct count"
+          },
+          {
+            "columns": [
+              "comparison_label"
+            ],
+            "status": "reported",
+            "reason": "comparison_label is unique and non-null on all 17 rows, proven by an exact distinct count"
+          }
+        ],
+        "rank_score": 0.5214,
+        "data_quality": [],
+        "findings": [
+          {
+            "column": "comparison_id",
+            "code": "nullable_grain_column",
+            "severity": "medium",
+            "detail": "comparison_id participates in the detected grain but the warehouse still allows it to be NULL"
+          }
+        ],
+        "profiled_at": "2026-10-16T10:03:31.933769+00:00",
+        "semantic_models": [
+          "rate_tests"
+        ]
+      },
+      {
+        "identifier": "pace_the_frontier.marts_dev.rpt_release_gaps",
+        "object_type": "table",
+        "row_count": 19,
+        "byte_size": null,
+        "columns": [
+          {
+            "name": "gap_id",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 19,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "gap_start_date",
+            "data_type": "DATE",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 19,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": "2026-08-13",
+            "max_value": "2026-10-07",
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": "day",
+            "temporal_span": 56,
+            "temporal_distinct_periods": 19,
+            "temporal_missing_periods": 37,
+            "temporal_largest_gap": 6
+          },
+          {
+            "name": "gap_end_date",
+            "data_type": "DATE",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 19,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": "2026-08-14",
+            "max_value": "2026-10-12",
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": "day",
+            "temporal_span": 60,
+            "temporal_distinct_periods": 19,
+            "temporal_missing_periods": 41,
+            "temporal_largest_gap": 6
+          },
+          {
+            "name": "gap_days",
+            "data_type": "BIGINT",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 7,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": 1,
+            "max_value": 7,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "quiet_days",
+            "data_type": "BIGINT",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 7,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": 0,
+            "max_value": 6,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "releases_on_end_date",
+            "data_type": "BIGINT",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": 1,
+            "max_value": 4,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "start_window",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "end_window",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "gap_position",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 3,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          }
+        ],
+        "candidate_keys": [
+          [
+            "gap_id"
+          ],
+          [
+            "gap_start_date"
+          ],
+          [
+            "gap_end_date"
+          ]
+        ],
+        "grain": [
+          "gap_id"
+        ],
+        "composite_keys": [],
+        "key_evidence": [
+          {
+            "columns": [
+              "gap_id"
+            ],
+            "status": "reported",
+            "reason": "gap_id is unique and non-null on all 19 rows, proven by an exact distinct count"
+          },
+          {
+            "columns": [
+              "gap_start_date"
+            ],
+            "status": "reported",
+            "reason": "gap_start_date is unique and non-null on all 19 rows, proven by an exact distinct count"
+          },
+          {
+            "columns": [
+              "gap_end_date"
+            ],
+            "status": "reported",
+            "reason": "gap_end_date is unique and non-null on all 19 rows, proven by an exact distinct count"
+          }
+        ],
+        "rank_score": 0.5276,
+        "data_quality": [],
+        "findings": [
+          {
+            "column": "gap_id",
+            "code": "nullable_grain_column",
+            "severity": "medium",
+            "detail": "gap_id participates in the detected grain but the warehouse still allows it to be NULL"
+          }
+        ],
+        "profiled_at": "2026-10-16T10:03:31.997826+00:00",
+        "semantic_models": [
+          "release_gaps"
+        ]
+      },
+      {
+        "identifier": "pace_the_frontier.raw.frontier_model_candidates",
+        "object_type": "table",
+        "row_count": 52,
+        "byte_size": null,
+        "columns": [
+          {
+            "name": "window",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 3,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "after",
+                  "count": 31
+                },
+                {
+                  "value": "before",
+                  "count": 20
+                },
+                {
+                  "value": "outside",
+                  "count": 1
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "counted",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "yes",
+                  "count": 29
+                },
+                {
+                  "value": "no",
+                  "count": 23
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "date",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 29,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "developer",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 16,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "model",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 52,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "tier",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.40384615384615385,
+            "distinct_count": 16,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "release_type",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 30,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "top_tier",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.4423076923076923,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "no",
+                  "count": 17
+                },
+                {
+                  "value": "yes",
+                  "count": 12
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "notes",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.09615384615384615,
+            "distinct_count": 41,
+            "distinct_count_exact": true,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": "free_text",
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "source_url",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 22,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "_source_file",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 1,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "data/frontier_models_pace_the_frontier.csv",
+                  "count": 52
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "_loaded_at",
+            "data_type": "TIMESTAMP WITH TIME ZONE",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 1,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": "2026-10-16T11:30:27.341249+02:00",
+            "max_value": "2026-10-16T11:30:27.341249+02:00",
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "2026-10-16T11:30:27.341249+02:00",
+                  "count": 52
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": "hour",
+            "temporal_span": 1,
+            "temporal_distinct_periods": 1,
+            "temporal_missing_periods": 0,
+            "temporal_largest_gap": 0
+          }
+        ],
+        "candidate_keys": [
+          [
+            "model"
+          ]
+        ],
+        "grain": [
+          "model"
+        ],
+        "composite_keys": [],
+        "key_evidence": [
+          {
+            "columns": [
+              "model"
+            ],
+            "status": "reported",
+            "reason": "model is unique and non-null on all 52 rows, proven by an exact distinct count"
+          }
+        ],
+        "rank_score": 0.4854,
+        "data_quality": [
+          "date is declared VARCHAR but 100% of values match the %Y-%m-%d date format; consider casting with that format"
+        ],
+        "findings": [
+          {
+            "column": "model",
+            "code": "nullable_grain_column",
+            "severity": "medium",
+            "detail": "model participates in the detected grain but the warehouse still allows it to be NULL"
+          }
+        ],
+        "profiled_at": "2026-10-16T10:03:32.149934+00:00",
+        "semantic_models": []
+      },
+      {
+        "identifier": "pace_the_frontier.reference_dev.seed_date_sensitivity",
+        "object_type": "table",
+        "row_count": 4,
+        "byte_size": null,
+        "columns": [
+          {
+            "name": "model_name",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "date_used",
+            "data_type": "DATE",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": "2026-08-12",
+            "max_value": "2026-09-18",
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": "day",
+            "temporal_span": 38,
+            "temporal_distinct_periods": 4,
+            "temporal_missing_periods": 34,
+            "temporal_largest_gap": 28
+          },
+          {
+            "name": "conflicting_date",
+            "data_type": "DATE",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": "2026-08-07",
+            "max_value": "2026-09-20",
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": "day",
+            "temporal_span": 45,
+            "temporal_distinct_periods": 4,
+            "temporal_missing_periods": 41,
+            "temporal_largest_gap": 30
+          },
+          {
+            "name": "conflicting_date_source",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          }
+        ],
+        "candidate_keys": [
+          [
+            "model_name"
+          ],
+          [
+            "date_used"
+          ],
+          [
+            "conflicting_date"
+          ],
+          [
+            "conflicting_date_source"
+          ]
+        ],
+        "grain": [
+          "model_name"
+        ],
+        "composite_keys": [],
+        "key_evidence": [
+          {
+            "columns": [
+              "model_name"
+            ],
+            "status": "reported",
+            "reason": "model_name is unique and non-null on all 4 rows, proven by an exact distinct count"
+          },
+          {
+            "columns": [
+              "date_used"
+            ],
+            "status": "reported",
+            "reason": "date_used is unique and non-null on all 4 rows, proven by an exact distinct count"
+          },
+          {
+            "columns": [
+              "conflicting_date"
+            ],
+            "status": "reported",
+            "reason": "conflicting_date is unique and non-null on all 4 rows, proven by an exact distinct count"
+          },
+          {
+            "columns": [
+              "conflicting_date_source"
+            ],
+            "status": "reported",
+            "reason": "conflicting_date_source is unique and non-null on all 4 rows, proven by an exact distinct count"
+          }
+        ],
+        "rank_score": 0.3454,
+        "data_quality": [],
+        "findings": [
+          {
+            "column": "model_name",
+            "code": "nullable_grain_column",
+            "severity": "medium",
+            "detail": "model_name participates in the detected grain but the warehouse still allows it to be NULL"
+          }
+        ],
+        "profiled_at": "2026-10-16T10:03:32.189577+00:00",
+        "semantic_models": []
+      },
+      {
+        "identifier": "pace_the_frontier.reference_dev.seed_labs",
+        "object_type": "table",
+        "row_count": 17,
+        "byte_size": null,
+        "columns": [
+          {
+            "name": "lab_id",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 17,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "lab_name",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 17,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": "name",
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "in_scope_list",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "parent_country",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "region",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "essay_coordination_group",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 3,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "essay_stance",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 3,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "stance_date",
+            "data_type": "DATE",
+            "nullable": true,
+            "null_fraction": 0.8235294117647058,
+            "distinct_count": 1,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": "2026-09-12",
+            "max_value": "2026-09-12",
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": "day",
+            "temporal_span": 1,
+            "temporal_distinct_periods": 1,
+            "temporal_missing_periods": 0,
+            "temporal_largest_gap": 0
+          },
+          {
+            "name": "stance_quote",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.8823529411764706,
+            "distinct_count": 2,
+            "distinct_count_exact": true,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "stance_source_url",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.8235294117647058,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          }
+        ],
+        "candidate_keys": [
+          [
+            "lab_id"
+          ],
+          [
+            "lab_name"
+          ]
+        ],
+        "grain": [
+          "lab_id"
+        ],
+        "composite_keys": [],
+        "key_evidence": [
+          {
+            "columns": [
+              "lab_id"
+            ],
+            "status": "reported",
+            "reason": "lab_id is unique and non-null on all 17 rows, proven by an exact distinct count"
+          },
+          {
+            "columns": [
+              "lab_name"
+            ],
+            "status": "reported",
+            "reason": "lab_name is unique and non-null on all 17 rows, proven by an exact distinct count"
+          }
+        ],
+        "rank_score": 0.7214,
+        "data_quality": [],
+        "findings": [
+          {
+            "column": "lab_id",
+            "code": "nullable_grain_column",
+            "severity": "medium",
+            "detail": "lab_id participates in the detected grain but the warehouse still allows it to be NULL"
+          }
+        ],
+        "profiled_at": "2026-10-16T10:03:32.267409+00:00",
+        "semantic_models": []
+      },
+      {
+        "identifier": "pace_the_frontier.reference_dev.seed_release_type_map",
+        "object_type": "table",
+        "row_count": 29,
+        "byte_size": null,
+        "columns": [
+          {
+            "name": "release_type",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 29,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "access_level",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 6,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "open_weights_status",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 3,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "has_gated_variant",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 27
+                },
+                {
+                  "value": true,
+                  "count": 2
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_snapshot_update",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 27
+                },
+                {
+                  "value": true,
+                  "count": 2
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_staggered_rollout",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 24
+                },
+                {
+                  "value": true,
+                  "count": 5
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          }
+        ],
+        "candidate_keys": [
+          [
+            "release_type"
+          ]
+        ],
+        "grain": [
+          "release_type"
+        ],
+        "composite_keys": [],
+        "key_evidence": [
+          {
+            "columns": [
+              "release_type"
+            ],
+            "status": "reported",
+            "reason": "release_type is unique and non-null on all 29 rows, proven by an exact distinct count"
+          }
+        ],
+        "rank_score": 0.5117,
+        "data_quality": [],
+        "findings": [
+          {
+            "column": "release_type",
+            "code": "nullable_grain_column",
+            "severity": "medium",
+            "detail": "release_type participates in the detected grain but the warehouse still allows it to be NULL"
+          }
+        ],
+        "profiled_at": "2026-10-16T10:03:32.304588+00:00",
+        "semantic_models": []
+      },
+      {
+        "identifier": "pace_the_frontier.reference_dev.seed_source_domains",
+        "object_type": "table",
+        "row_count": 17,
+        "byte_size": null,
+        "columns": [
+          {
+            "name": "source_domain",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 17,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "source_type",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "source_rank",
+            "data_type": "INTEGER",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": 1,
+            "max_value": 4,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          }
+        ],
+        "candidate_keys": [
+          [
+            "source_domain"
+          ]
+        ],
+        "grain": [
+          "source_domain"
+        ],
+        "composite_keys": [],
+        "key_evidence": [
+          {
+            "columns": [
+              "source_domain"
+            ],
+            "status": "reported",
+            "reason": "source_domain is unique and non-null on all 17 rows, proven by an exact distinct count"
+          }
+        ],
+        "rank_score": 0.4814,
+        "data_quality": [],
+        "findings": [
+          {
+            "column": "source_domain",
+            "code": "nullable_grain_column",
+            "severity": "medium",
+            "detail": "source_domain participates in the detected grain but the warehouse still allows it to be NULL"
+          }
+        ],
+        "profiled_at": "2026-10-16T10:03:32.354681+00:00",
+        "semantic_models": []
+      },
+      {
+        "identifier": "pace_the_frontier.reference_dev.seed_tier_map",
+        "object_type": "table",
+        "row_count": 15,
+        "byte_size": null,
+        "columns": [
+          {
+            "name": "tier",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 15,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "tier_band",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "tier_rank",
+            "data_type": "INTEGER",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 4,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": 1,
+            "max_value": 4,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          }
+        ],
+        "candidate_keys": [
+          [
+            "tier"
+          ]
+        ],
+        "grain": [
+          "tier"
+        ],
+        "composite_keys": [],
+        "key_evidence": [
+          {
+            "columns": [
+              "tier"
+            ],
+            "status": "reported",
+            "reason": "tier is unique and non-null on all 15 rows, proven by an exact distinct count"
+          }
+        ],
+        "rank_score": 0.4744,
+        "data_quality": [],
+        "findings": [
+          {
+            "column": "tier",
+            "code": "nullable_grain_column",
+            "severity": "medium",
+            "detail": "tier participates in the detected grain but the warehouse still allows it to be NULL"
+          }
+        ],
+        "profiled_at": "2026-10-16T10:03:32.377107+00:00",
+        "semantic_models": []
+      },
+      {
+        "identifier": "pace_the_frontier.staging_dev.stg_research__release_candidates",
+        "object_type": "table",
+        "row_count": 52,
+        "byte_size": null,
+        "columns": [
+          {
+            "name": "release_id",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 52,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "lab_id",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 17,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "developer_name",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 16,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": "name",
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "model_name",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 52,
+            "distinct_count_exact": true,
+            "is_unique": true,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "release_date",
+            "data_type": "DATE",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 26,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": "2026-08-12",
+            "max_value": "2026-10-12",
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": "day",
+            "temporal_span": 62,
+            "temporal_distinct_periods": 28,
+            "temporal_missing_periods": 34,
+            "temporal_largest_gap": 6
+          },
+          {
+            "name": "source_essay_window",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 3,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "after",
+                  "count": 31
+                },
+                {
+                  "value": "before",
+                  "count": 20
+                },
+                {
+                  "value": "outside",
+                  "count": 1
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_counted",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": true,
+                  "count": 29
+                },
+                {
+                  "value": false,
+                  "count": 23
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "is_top_tier",
+            "data_type": "BOOLEAN",
+            "nullable": true,
+            "null_fraction": 0.4423076923076923,
+            "distinct_count": 2,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": false,
+            "max_value": true,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": false,
+                  "count": 17
+                },
+                {
+                  "value": true,
+                  "count": 12
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "tier",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.40384615384615385,
+            "distinct_count": 16,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "release_type",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 30,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "notes",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.09615384615384615,
+            "distinct_count": 41,
+            "distinct_count_exact": true,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": "free_text",
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "source_url",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 22,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "source_domain",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 18,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": null,
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "_source_file",
+            "data_type": "VARCHAR",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 1,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": null,
+            "max_value": null,
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "data/frontier_models_pace_the_frontier.csv",
+                  "count": 52
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": null,
+            "temporal_span": null,
+            "temporal_distinct_periods": null,
+            "temporal_missing_periods": null,
+            "temporal_largest_gap": null
+          },
+          {
+            "name": "_loaded_at",
+            "data_type": "TIMESTAMP WITH TIME ZONE",
+            "nullable": true,
+            "null_fraction": 0.0,
+            "distinct_count": 1,
+            "distinct_count_exact": false,
+            "is_unique": false,
+            "min_value": "2026-10-16T11:30:27.341249+02:00",
+            "max_value": "2026-10-16T11:30:27.341249+02:00",
+            "pii": null,
+            "pii_overridden": null,
+            "value_domain": {
+              "values": [
+                {
+                  "value": "2026-10-16T11:30:27.341249+02:00",
+                  "count": 52
+                }
+              ],
+              "elided": 0
+            },
+            "temporal_granularity": "hour",
+            "temporal_span": 1,
+            "temporal_distinct_periods": 1,
+            "temporal_missing_periods": 0,
+            "temporal_largest_gap": 0
+          }
+        ],
+        "candidate_keys": [
+          [
+            "release_id"
+          ],
+          [
+            "model_name"
+          ]
+        ],
+        "grain": [
+          "release_id"
+        ],
+        "composite_keys": [],
+        "key_evidence": [
+          {
+            "columns": [
+              "release_id"
+            ],
+            "status": "reported",
+            "reason": "release_id is unique and non-null on all 52 rows, proven by an exact distinct count"
+          },
+          {
+            "columns": [
+              "model_name"
+            ],
+            "status": "reported",
+            "reason": "model_name is unique and non-null on all 52 rows, proven by an exact distinct count"
+          }
+        ],
+        "rank_score": 0.62,
+        "data_quality": [],
+        "findings": [
+          {
+            "column": "release_id",
+            "code": "nullable_grain_column",
+            "severity": "medium",
+            "detail": "release_id participates in the detected grain but the warehouse still allows it to be NULL"
+          }
+        ],
+        "profiled_at": "2026-10-16T10:03:32.556917+00:00",
+        "semantic_models": []
+      }
+    ],
+    "relationships": [
+      {
+        "from_dataset": "pace_the_frontier.staging_dev.stg_research__release_candidates",
+        "from_columns": [
+          "lab_id"
+        ],
+        "to_dataset": "pace_the_frontier.reference_dev.seed_labs",
+        "to_columns": [
+          "lab_id"
+        ],
+        "kind": "declared",
+        "confidence": 1.0,
+        "verified": false,
+        "orphan_fraction": null,
+        "declared_by": null,
+        "declaration_sources": [
+          "manifest"
+        ]
+      },
+      {
+        "from_dataset": "pace_the_frontier.staging_dev.stg_research__release_candidates",
+        "from_columns": [
+          "tier"
+        ],
+        "to_dataset": "pace_the_frontier.reference_dev.seed_tier_map",
+        "to_columns": [
+          "tier"
+        ],
+        "kind": "declared",
+        "confidence": 1.0,
+        "verified": false,
+        "orphan_fraction": null,
+        "declared_by": null,
+        "declaration_sources": [
+          "manifest"
+        ]
+      },
+      {
+        "from_dataset": "pace_the_frontier.staging_dev.stg_research__release_candidates",
+        "from_columns": [
+          "release_type"
+        ],
+        "to_dataset": "pace_the_frontier.reference_dev.seed_release_type_map",
+        "to_columns": [
+          "release_type"
+        ],
+        "kind": "declared",
+        "confidence": 1.0,
+        "verified": false,
+        "orphan_fraction": null,
+        "declared_by": null,
+        "declaration_sources": [
+          "manifest"
+        ]
+      },
+      {
+        "from_dataset": "pace_the_frontier.staging_dev.stg_research__release_candidates",
+        "from_columns": [
+          "source_domain"
+        ],
+        "to_dataset": "pace_the_frontier.reference_dev.seed_source_domains",
+        "to_columns": [
+          "source_domain"
+        ],
+        "kind": "declared",
+        "confidence": 1.0,
+        "verified": false,
+        "orphan_fraction": null,
+        "declared_by": null,
+        "declaration_sources": [
+          "manifest"
+        ]
+      },
+      {
+        "from_dataset": "pace_the_frontier.marts_dev.fct_release_candidates",
+        "from_columns": [
+          "lab_id"
+        ],
+        "to_dataset": "pace_the_frontier.marts_dev.dim_labs",
+        "to_columns": [
+          "lab_id"
+        ],
+        "kind": "declared",
+        "confidence": 1.0,
+        "verified": false,
+        "orphan_fraction": null,
+        "declared_by": null,
+        "declaration_sources": [
+          "manifest"
+        ]
+      },
+      {
+        "from_dataset": "pace_the_frontier.intermediate_dev.int_release_candidates__enriched",
+        "from_columns": [
+          "lab_id"
+        ],
+        "to_dataset": "pace_the_frontier.marts_dev.dim_labs",
+        "to_columns": [
+          "lab_id"
+        ],
+        "kind": "inferred",
+        "confidence": 0.9,
+        "verified": false,
+        "orphan_fraction": null,
+        "declared_by": null,
+        "declaration_sources": []
+      },
+      {
+        "from_dataset": "pace_the_frontier.intermediate_dev.int_release_candidates__enriched",
+        "from_columns": [
+          "lab_id"
+        ],
+        "to_dataset": "pace_the_frontier.reference_dev.seed_labs",
+        "to_columns": [
+          "lab_id"
+        ],
+        "kind": "inferred",
+        "confidence": 0.65,
+        "verified": false,
+        "orphan_fraction": null,
+        "declared_by": null,
+        "declaration_sources": []
+      },
+      {
+        "from_dataset": "pace_the_frontier.marts_dev.dim_labs",
+        "from_columns": [
+          "lab_id"
+        ],
+        "to_dataset": "pace_the_frontier.reference_dev.seed_labs",
+        "to_columns": [
+          "lab_id"
+        ],
+        "kind": "inferred",
+        "confidence": 0.65,
+        "verified": false,
+        "orphan_fraction": null,
+        "declared_by": null,
+        "declaration_sources": []
+      },
+      {
+        "from_dataset": "pace_the_frontier.marts_dev.fct_release_candidates",
+        "from_columns": [
+          "lab_id"
+        ],
+        "to_dataset": "pace_the_frontier.reference_dev.seed_labs",
+        "to_columns": [
+          "lab_id"
+        ],
+        "kind": "inferred",
+        "confidence": 0.65,
+        "verified": false,
+        "orphan_fraction": null,
+        "declared_by": null,
+        "declaration_sources": []
+      },
+      {
+        "from_dataset": "pace_the_frontier.reference_dev.seed_labs",
+        "from_columns": [
+          "lab_id"
+        ],
+        "to_dataset": "pace_the_frontier.marts_dev.dim_labs",
+        "to_columns": [
+          "lab_id"
+        ],
+        "kind": "inferred",
+        "confidence": 0.9,
+        "verified": false,
+        "orphan_fraction": null,
+        "declared_by": null,
+        "declaration_sources": []
+      },
+      {
+        "from_dataset": "pace_the_frontier.staging_dev.stg_research__release_candidates",
+        "from_columns": [
+          "lab_id"
+        ],
+        "to_dataset": "pace_the_frontier.marts_dev.dim_labs",
+        "to_columns": [
+          "lab_id"
+        ],
+        "kind": "inferred",
+        "confidence": 0.9,
+        "verified": false,
+        "orphan_fraction": null,
+        "declared_by": null,
+        "declaration_sources": []
+      }
+    ]
+  },
+  "warehouse_from": "cache",
+  "cache_updated_at": "2026-10-16T10:03:30.826302+00:00",
+  "transform_layer": {
+    "files": {
+      "models/intermediate/int_release_candidates__enriched.sql": "e8a9cb955c650654188167c44d53638708ddb72e6b7cdbb0a42d7ed954cf38be",
+      "models/intermediate/int_release_candidates__enriched.yml": "7c2234055e75b0d88a848a4b0d494fcfe212c72f8d6d8ffc42551a5c6259ea18",
+      "models/marts/_marts.yml": "24c00268cdeb308c296ea847a0bfb93cb47e36af93267cd69dbd8985b7d3454d",
+      "models/marts/dim_labs.sql": "face9df2a9d5a4a3c3bd1ddbd8b34f403ca9d5238cc5767fd551a35764383a24",
+      "models/marts/fct_release_candidates.sql": "6a39565051d37301c02b73022912df5be9db04995c67c7aa252878d7a36f4ead",
+      "models/marts/metricflow_time_spine.sql": "446a4f1bc4849f3be4e682876c8f180aeed33e6edb059b630bd5c2397617da38",
+      "models/marts/rpt_rate_tests.sql": "c7c93cc77bccc1fba04791c8a36bd5893c5cf10439124f7130fabc92bb0f0bdf",
+      "models/marts/rpt_release_gaps.sql": "a271c9abad655ab8ef02fe386798d162bc4d8f536c4e88d0c6d95dc57524a81f",
+      "models/semantic/metrics.yml": "79be2c216a5440f0e5d8d9f140746d7890a77b62008d6ef547a184d2d03b0c68",
+      "models/semantic/semantic_models.yml": "4166fbe27b79804f9d36dddec160d5bf9bcb554bbde701c40df4fcaa4974901d",
+      "models/staging/_research__sources.yml": "9219a52287530c50bb0f006d95e926a2d2329a3f4af6daca55745e58589c7022",
+      "models/staging/stg_research__release_candidates.sql": "b7c4bd17a55f9a1277155e3f578e6a3c3d66cb1ba79ce795bd7b1dcd81409733",
+      "models/staging/stg_research__release_candidates.yml": "0e11f6670843a4079d8348ba4017af81cb537ee3004abf5bfef9ec9198fc9149",
+      "macros/essay_window.sql": "1a4199201ea8b541b59bd16fe1b85d76da0527fb672b30ce2fa5e3b7756021f0",
+      "macros/generate_schema_name.sql": "549442674c29d339548de357a9df267dca041ba948ad85292f270864f84ece72",
+      "macros/slugify.sql": "b112f89433afa3b67b55db2584be891dbdd6dffc12bf637278574740fc76dc86",
+      "seeds/_seeds.yml": "5ce506261e1d772cb5fdb4dffef7c2da0fae7f694da784c5edb5b5549ecdd55f",
+      "seeds/seed_date_sensitivity.csv": "6a09428b37718dba2af3b1069c6d57b89717afb251681e607e85fb2a48c729fe",
+      "seeds/seed_labs.csv": "404bea32673bf8843b8dc0d29873b2cae80c18b58cc126ab30dc09d5d5770080",
+      "seeds/seed_release_type_map.csv": "5868221ab95bcc7d0dba8d33c2e4fec15fea6d8d9ec74ee8efa8cb153f296658",
+      "seeds/seed_source_domains.csv": "71ad48f6febc5a7ca324a556bce14c968f29c3927806c4f67a7f6be124deada0",
+      "seeds/seed_tier_map.csv": "9f3209a7f0caf5b2df2808c73b733b77fa872f53753e135fb185bf367d47f003",
+      "tests/assert_enrichment_invariants.sql": "443c700077c1974f4c42a4808f959b608bc44c1da0590a6faefbac7010e18c6f",
+      "tests/assert_essay_window_matches_source.sql": "15c1a5f34a1250e035194c39fe2989c9c7db3c677f1afa84daf62f112007907c",
+      "tests/assert_exclusion_category_iff_excluded.sql": "2f68dd973e1390db8a8b09869894de81f65018890c4b5427afa5b03587084723",
+      "tests/assert_methodology_counts.sql": "7e3011a334fe2a7ae2da50c3ba5535df9e47dd5edd3c2733be8e44aaba9addb4",
+      "tests/assert_methodology_per_lab_counts.sql": "4368c5e5b51e784f4794395e26ff732b0b79e8b5a33595cca111e6dc461c4637",
+      "tests/assert_rate_tests_binomial_reference.sql": "8a55fd5516c320e3f7be7cf517266709151ee08490b16c4958de0316c8ab9284",
+      "tests/assert_release_gaps_reference.sql": "c8632b97ea8658586795c4ffea1cedf4491a3c11288bb5280c8c11a019866f41",
+      "profiles.yml": "b74afb2f88ba358724b5209eb8c09a3bc622ec050d8269138d16663077a39511",
+      "dbt_project.yml": "9ae94f00a9c46b63f3ceae6531c74031adadd1f78fde2687bc810c01c84afb4b"
+    },
+    "models": [
+      "dim_labs",
+      "fct_release_candidates",
+      "int_release_candidates__enriched",
+      "metricflow_time_spine",
+      "rpt_rate_tests",
+      "rpt_release_gaps",
+      "seed_date_sensitivity",
+      "seed_labs",
+      "seed_release_type_map",
+      "seed_source_domains",
+      "seed_tier_map",
+      "stg_research__release_candidates"
+    ],
+    "model_paths": {
+      "int_release_candidates__enriched": "models/intermediate/int_release_candidates__enriched.sql",
+      "dim_labs": "models/marts/dim_labs.sql",
+      "fct_release_candidates": "models/marts/fct_release_candidates.sql",
+      "metricflow_time_spine": "models/marts/metricflow_time_spine.sql",
+      "rpt_rate_tests": "models/marts/rpt_rate_tests.sql",
+      "rpt_release_gaps": "models/marts/rpt_release_gaps.sql",
+      "stg_research__release_candidates": "models/staging/stg_research__release_candidates.sql",
+      "seed_date_sensitivity": "seeds/seed_date_sensitivity.csv",
+      "seed_labs": "seeds/seed_labs.csv",
+      "seed_release_type_map": "seeds/seed_release_type_map.csv",
+      "seed_source_domains": "seeds/seed_source_domains.csv",
+      "seed_tier_map": "seeds/seed_tier_map.csv"
+    },
+    "sources": [
+      {
+        "source_name": "research",
+        "schema_name": "raw",
+        "table": "frontier_model_candidates",
+        "columns": [
+          "window",
+          "counted",
+          "date",
+          "developer",
+          "model",
+          "tier",
+          "release_type",
+          "top_tier",
+          "notes",
+          "source_url",
+          "_source_file",
+          "_loaded_at"
+        ],
+        "path": "models/staging/_research__sources.yml"
+      }
+    ],
+    "model_sources": {
+      "stg_research__release_candidates": [
+        "research.frontier_model_candidates"
+      ]
+    },
+    "model_refs": {
+      "int_release_candidates__enriched": [
+        "seed_date_sensitivity",
+        "seed_labs",
+        "seed_release_type_map",
+        "seed_source_domains",
+        "seed_tier_map",
+        "stg_research__release_candidates"
+      ],
+      "dim_labs": [
+        "seed_labs"
+      ],
+      "fct_release_candidates": [
+        "int_release_candidates__enriched"
+      ],
+      "rpt_rate_tests": [
+        "dim_labs",
+        "fct_release_candidates"
+      ],
+      "rpt_release_gaps": [
+        "fct_release_candidates"
+      ]
+    },
+    "notes": []
+  },
+  "semantic_layer": {
+    "semantic_models": [
+      {
+        "name": "release_candidates",
+        "path": "models/semantic/semantic_models.yml",
+        "content_sha256": "96fa06b7c17724f1f9eb78b59fa9c6e03ea3dee84d16b233be4c134fd47b0a25",
+        "model_ref": "fct_release_candidates",
+        "relation": null,
+        "entities": {
+          "release": "release_id",
+          "lab": "lab_id"
+        },
+        "dimensions": {
+          "release_date": "release_date",
+          "essay_window": "essay_window",
+          "essay_period": "essay_period",
+          "essay_period_label": "essay_period_label",
+          "days_from_essay": "days_from_essay",
+          "model_name": "model_name",
+          "tier_band": "tier_band",
+          "tier_rank": "tier_rank",
+          "is_top_tier": "is_top_tier",
+          "top_tier_kind": "top_tier_kind",
+          "access_level": "access_level",
+          "is_generally_available": "is_generally_available",
+          "is_restricted_access": "is_restricted_access",
+          "is_announced_only": "is_announced_only",
+          "has_gated_variant": "has_gated_variant",
+          "open_weights_status": "open_weights_status",
+          "is_open_weights": "is_open_weights",
+          "is_snapshot_update": "is_snapshot_update",
+          "is_staggered_rollout": "is_staggered_rollout",
+          "launch_event": "launch_event",
+          "release_weekday": "release_weekday",
+          "is_weekend": "is_weekend",
+          "is_counted": "is_counted",
+          "exclusion_category": "exclusion_category",
+          "is_borderline_lab": "is_borderline_lab",
+          "is_counted_released_only": "is_counted_released_only",
+          "is_counted_incl_borderline": "is_counted_incl_borderline",
+          "has_date_conflict": "has_date_conflict",
+          "essay_window_alt_date": "essay_window_alt_date",
+          "is_window_date_sensitive": "is_window_date_sensitive",
+          "source_type": "source_type",
+          "source_domain": "source_domain"
+        },
+        "categorical_dimensions": {
+          "essay_window": "essay_window",
+          "essay_period": "essay_period",
+          "essay_period_label": "essay_period_label",
+          "days_from_essay": "days_from_essay",
+          "model_name": "model_name",
+          "tier_band": "tier_band",
+          "tier_rank": "tier_rank",
+          "is_top_tier": "is_top_tier",
+          "top_tier_kind": "top_tier_kind",
+          "access_level": "access_level",
+          "is_generally_available": "is_generally_available",
+          "is_restricted_access": "is_restricted_access",
+          "is_announced_only": "is_announced_only",
+          "has_gated_variant": "has_gated_variant",
+          "open_weights_status": "open_weights_status",
+          "is_open_weights": "is_open_weights",
+          "is_snapshot_update": "is_snapshot_update",
+          "is_staggered_rollout": "is_staggered_rollout",
+          "launch_event": "launch_event",
+          "release_weekday": "release_weekday",
+          "is_weekend": "is_weekend",
+          "is_counted": "is_counted",
+          "exclusion_category": "exclusion_category",
+          "is_borderline_lab": "is_borderline_lab",
+          "is_counted_released_only": "is_counted_released_only",
+          "is_counted_incl_borderline": "is_counted_incl_borderline",
+          "has_date_conflict": "has_date_conflict",
+          "essay_window_alt_date": "essay_window_alt_date",
+          "is_window_date_sensitive": "is_window_date_sensitive",
+          "source_type": "source_type",
+          "source_domain": "source_domain"
+        },
+        "measures": {
+          "release_count": null,
+          "lab_count": "lab_id"
+        },
+        "keys": []
+      },
+      {
+        "name": "labs",
+        "path": "models/semantic/semantic_models.yml",
+        "content_sha256": "92a25efcbe5a6615edbc0e9543468d6eda1b7acb9a0a7224319ac1d9e9b50992",
+        "model_ref": "dim_labs",
+        "relation": null,
+        "entities": {
+          "lab": "lab_id"
+        },
+        "dimensions": {
+          "lab_name": "lab_name",
+          "region": "region",
+          "parent_country": "parent_country",
+          "essay_coordination_group": "essay_coordination_group",
+          "essay_stance": "essay_stance",
+          "is_author_or_endorser": "is_author_or_endorser",
+          "lab_scope": "lab_scope"
+        },
+        "categorical_dimensions": {
+          "lab_name": "lab_name",
+          "region": "region",
+          "parent_country": "parent_country",
+          "essay_coordination_group": "essay_coordination_group",
+          "essay_stance": "essay_stance",
+          "is_author_or_endorser": "is_author_or_endorser",
+          "lab_scope": "lab_scope"
+        },
+        "measures": {},
+        "keys": []
+      },
+      {
+        "name": "release_gaps",
+        "path": "models/semantic/semantic_models.yml",
+        "content_sha256": "17a00bac7faebb5745948d7c2ecf5a90ee7633cf4a8f62a2244e280ae6a39e3c",
+        "model_ref": "rpt_release_gaps",
+        "relation": null,
+        "entities": {
+          "gap": "gap_id"
+        },
+        "dimensions": {
+          "gap_end_date": "gap_end_date",
+          "gap_position": "gap_position",
+          "start_window": "start_window",
+          "end_window": "end_window"
+        },
+        "categorical_dimensions": {
+          "gap_position": "gap_position",
+          "start_window": "start_window",
+          "end_window": "end_window"
+        },
+        "measures": {
+          "gap_count": null,
+          "max_gap_days": "gap_days",
+          "avg_gap_days": "gap_days"
+        },
+        "keys": []
+      },
+      {
+        "name": "rate_tests",
+        "path": "models/semantic/semantic_models.yml",
+        "content_sha256": "b6fd0981824349a0f79f0fd3b9a06a3015ae0927be805fe0020b00f190882e67",
+        "model_ref": "rpt_rate_tests",
+        "relation": null,
+        "entities": {
+          "rate_test": "comparison_id"
+        },
+        "dimensions": {
+          "essay_date": "essay_date",
+          "comparison_id": "comparison_id",
+          "comparison_order": "comparison_order",
+          "comparison_group": "comparison_group",
+          "comparison_label": "comparison_label"
+        },
+        "categorical_dimensions": {
+          "comparison_id": "comparison_id",
+          "comparison_order": "comparison_order",
+          "comparison_group": "comparison_group",
+          "comparison_label": "comparison_label"
+        },
+        "measures": {
+          "test_before_count": "before_count",
+          "test_after_count": "after_count",
+          "test_change": "change",
+          "test_rate_ratio": "rate_ratio",
+          "test_p_value": "p_value_two_sided",
+          "test_p_value_bonferroni": "p_value_bonferroni"
+        },
+        "keys": []
+      }
+    ],
+    "metrics": [
+      {
+        "name": "frontier_releases",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "275b5ce4759454ebb4d8481b27732b6ac9e5cc4ca2737473800707ecab5e078d",
+        "input_measures": [
+          "release_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "frontier_releases_before",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "ece186ccff58e2ceddade4d21092c12387d6c867eefa7c032d545d67ae7d9191",
+        "input_measures": [
+          "release_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "frontier_releases_after",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "540d1976e5a0b62a4408979bab73cda4d86e39b36588d7962b9385b21e2c70ef",
+        "input_measures": [
+          "release_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "frontier_releases_change",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "dd16bd83fa809acb99bd4d6e1ef2402c16a61530084cef0774d48187527fcbf0",
+        "input_measures": [],
+        "input_metrics": [
+          "frontier_releases_after",
+          "frontier_releases_before"
+        ]
+      },
+      {
+        "name": "frontier_releases_change_pct",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "6f44bcfd5d586c5a82ae8439df8f21b145fac5b9ff5620978496bff3b447576e",
+        "input_measures": [],
+        "input_metrics": [
+          "frontier_releases_after",
+          "frontier_releases_before"
+        ]
+      },
+      {
+        "name": "top_tier_releases",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "813fe034beb96dbc1542364322c5d40ff6f49ec40f434aa18d5b3bb623dbc36f",
+        "input_measures": [
+          "release_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "top_tier_releases_before",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "688060a3a038be86575a2669cfd7741cc023d1e238fb186c483aa5cb6c4346d5",
+        "input_measures": [
+          "release_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "top_tier_releases_after",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "d473cbca0c7ed2c99c0df7a172d13777cbfeb59b5bb183a1b516c8057231f214",
+        "input_measures": [
+          "release_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "top_tier_releases_change",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "0a950dd50e0f03b6b7db3627ca66eb4a96288a3c7c00c8470954a9b08990d5a7",
+        "input_measures": [],
+        "input_metrics": [
+          "top_tier_releases_after",
+          "top_tier_releases_before"
+        ]
+      },
+      {
+        "name": "top_tier_releases_change_pct",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "963e9c36259d3e9e741862b4b52a4586ffa53024d24b054fdcdfa7f2ae2d394e",
+        "input_measures": [],
+        "input_metrics": [
+          "top_tier_releases_after",
+          "top_tier_releases_before"
+        ]
+      },
+      {
+        "name": "new_flagship_releases",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "e826b1143311ea37cfc2946cb032c6e08f7fc43aa35335f5fdae4896d115eadf",
+        "input_measures": [
+          "release_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "new_flagship_releases_before",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "4808c896697770ca813d7f813a877a84b4417ea7c2e3ce1de7d850518248baa1",
+        "input_measures": [
+          "release_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "new_flagship_releases_after",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "2855caffb23e54849ea2553d511c13300f4a62ddb266c16b524806ddf3d810d1",
+        "input_measures": [
+          "release_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "new_flagship_releases_change",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "8594c46661198ee325b7b8c1a3663201daa9176fd6a8351b9b8b006eb20be852",
+        "input_measures": [],
+        "input_metrics": [
+          "new_flagship_releases_after",
+          "new_flagship_releases_before"
+        ]
+      },
+      {
+        "name": "new_flagship_releases_change_pct",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "06c40725a1b4dca20806fe22153ae2164ad4eab1cb478c8a0a766def9027c789",
+        "input_measures": [],
+        "input_metrics": [
+          "new_flagship_releases_after",
+          "new_flagship_releases_before"
+        ]
+      },
+      {
+        "name": "labs_shipping",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "32bbdda526937de422f7209c2c6cc130d8dc468f9822e701c1f681b55611e99c",
+        "input_measures": [
+          "lab_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "labs_shipping_before",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "bd5b16135918c553e534d5ae9ebff298623f26554b8e527e3d5a21b916fd6e87",
+        "input_measures": [
+          "lab_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "labs_shipping_after",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "82b78deacb68bcf4dfcc3ec46d839f60d19f1af7140e4c5867ca2e812deff832",
+        "input_measures": [
+          "lab_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "labs_shipping_change",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "2ee3eaec0a468d99e4dc0d22c4fd28fb3234fc90b5c407c91a9fbecd4d6ede08",
+        "input_measures": [],
+        "input_metrics": [
+          "labs_shipping_after",
+          "labs_shipping_before"
+        ]
+      },
+      {
+        "name": "labs_shipping_change_pct",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "be66788e2e8d95c587b498ac2f7e617a3e888da8557a38a344ac3476b83d209f",
+        "input_measures": [],
+        "input_metrics": [
+          "labs_shipping_after",
+          "labs_shipping_before"
+        ]
+      },
+      {
+        "name": "generally_available_releases",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "24c2f032d475a400ff33455e00aaadcde8d5aad0a4ed48b50bb382588b392def",
+        "input_measures": [
+          "release_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "restricted_access_releases",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "6db22be8251c8ce222ee4abda3356bd70fe37ffa399d73a0479e5b40aa63704b",
+        "input_measures": [
+          "release_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "open_weights_releases",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "313fdbfa15e4c4f71a5ee5eb10868fdc368e62126d6b385fdeb127ead6c72857",
+        "input_measures": [
+          "release_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "generally_available_share",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "53d7b839e3aa5d14ff917ab375a59843f41f5b85714afddcc88814715789bded",
+        "input_measures": [],
+        "input_metrics": [
+          "generally_available_releases",
+          "frontier_releases"
+        ]
+      },
+      {
+        "name": "restricted_access_share",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "e8f102a2ff83003d3589754ebc59ab022d8cbcb6f062c8d2ff58ce7defd06614",
+        "input_measures": [],
+        "input_metrics": [
+          "restricted_access_releases",
+          "frontier_releases"
+        ]
+      },
+      {
+        "name": "open_weights_share",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "631d78aef60faea81ce7e9ffa836c46e9f384cdf81f5922a68d4054c8707ee22",
+        "input_measures": [],
+        "input_metrics": [
+          "open_weights_releases",
+          "frontier_releases"
+        ]
+      },
+      {
+        "name": "top_tier_share",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "18b500efe6d8b2fcd33639d520231d56a793d2719f1244999b17ca50202da330",
+        "input_measures": [],
+        "input_metrics": [
+          "top_tier_releases",
+          "frontier_releases"
+        ]
+      },
+      {
+        "name": "frontier_releases_released_only",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "e0a02c6a4e4cf29390334edef4e1ed50fdef4bffe847fabaf1688348c74ce0b0",
+        "input_measures": [
+          "release_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "frontier_releases_incl_borderline",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "162bd9637388090492a5e055d3453553b5efcd3ac7e05a7ac027407fb3071941",
+        "input_measures": [
+          "release_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "excluded_candidates",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "69243e44b141351fe380b3750984e334b96d680026fde4139f08699ce4de87c6",
+        "input_measures": [
+          "release_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "release_candidates",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "a7be202fe87b8265a4348ee5ffbdb71c8abe543cc0fa4dc14460776b57f741e2",
+        "input_measures": [
+          "release_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "release_gaps",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "8da5527aa9da71201e14244444fafbcbd3454082e7fefcba6fcac1ea6ac38362",
+        "input_measures": [
+          "gap_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "longest_gap_days",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "4f1c4ebb89b7d86384815e51807a302773e1fc64c60ad419792b3919932818fc",
+        "input_measures": [
+          "max_gap_days"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "average_gap_days",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "c100cdf5329da3521f28188bc55ef4316ff8c95dda120de18f248e9673b27ef3",
+        "input_measures": [
+          "avg_gap_days"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "rate_test_before",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "81d06beef37ad8023c6e93f72daa352d6fadb8e1fb931fa66c4c260d0ca5c599",
+        "input_measures": [
+          "test_before_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "rate_test_after",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "df02411c5d946b9d1bb5f6d8f6edaedecbdde5da6f76a8591e27ed74ce78f34d",
+        "input_measures": [
+          "test_after_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "rate_test_change",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "3614ba4ec14acff808b0d70a3bd5e3ca31478b89343df4c091edbe091ff26771",
+        "input_measures": [
+          "test_change"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "rate_test_rate_ratio",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "523fa14978dbce26ec3ba529f61df5eeb0b1b4448cb92e66a063fc9586978d27",
+        "input_measures": [
+          "test_rate_ratio"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "rate_test_p_value",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "7ce93f5ab730fea1cc1421a5b21120021f0aa62309c3efcdbca940acd32d36f2",
+        "input_measures": [
+          "test_p_value"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "rate_test_p_value_bonferroni",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "2b26d7a5e0aa08b53dc13ede84a453c0ca49d0e467f0c083e92f9a2294aedb65",
+        "input_measures": [
+          "test_p_value_bonferroni"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "frontier_releases_daily",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "6fd5d4599a3c877cb66d1c2b33705d83496b482df4653c9fba6b2fe2d7754dd6",
+        "input_measures": [
+          "release_count"
+        ],
+        "input_metrics": []
+      },
+      {
+        "name": "top_tier_releases_daily",
+        "path": "models/semantic/metrics.yml",
+        "content_sha256": "54233ecf69ccad2c1d4968155d781f3b61188606efa998b30d5ae9c451c6a8df",
+        "input_measures": [
+          "release_count"
+        ],
+        "input_metrics": []
+      }
+    ],
+    "relationships": [],
+    "relationships_and_keys_captured": false,
+    "notes": []
+  }
+}
